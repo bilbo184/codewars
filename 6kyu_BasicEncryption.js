@@ -20,3 +20,11 @@ let encrypt = function(str, n) {
         return temp>255 ? String.fromCharCode(temp%256) : String.fromCharCode(temp); 
     })
 }
+
+console.log(encrypt("a",1)); // b
+
+// solution 2
+
+// function encrypt(text, rule) {
+//   return text.replace(/./g, c => String.fromCharCode((c.charCodeAt() + rule) & 255))
+// }
