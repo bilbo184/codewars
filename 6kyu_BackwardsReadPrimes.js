@@ -20,11 +20,10 @@
 
 // Example
 
-// backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97] backwardsPrime
-// (9900, 10000) => [9923, 9931, 9941, 9967]
-
-// backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97] 
+// backwardsPrime(2, 100) => [13, 17, 31, 37, 71, 73, 79, 97]
 // backwardsPrime(9900, 10000) => [9923, 9931, 9941, 9967]
+
+
 
 let backwardsPrime = function(min, max) {
     let arr = [];
