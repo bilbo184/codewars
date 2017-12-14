@@ -24,7 +24,6 @@
 // backwardsPrime(9900, 10000) => [9923, 9931, 9941, 9967]
 
 
-
 let backwardsPrime = function(min, max) {
     let arr = [];
     for(let i = min; i <= max; i++) {
@@ -37,16 +36,27 @@ let backwardsPrime = function(min, max) {
 }
 
 function reverseNum(n) {
-    return Number(n.toString().split("").reverse().join(""));
+    return n.toString().split('').reverse().join('');
 }
 
-function isPrime(n) {
-    if(n === 2 || n === 3) { return true; }
-    if(n % 2 === 0 || n < 2) { return false; }
-    for(let i = 3; i <= Math.sqrt(n); i+=2) {
-        if(n % i === 0) {
-            return false;
-        }
+function isPrime(num) {
+  for(var i = 2; i < num; i++){
+    if(num % i === 0){
+      return false;
     }
-    return true;
+  }
+  return true;
 }
+
+console.log(backwardsPrime(2, 100));
+console.log(backwardsPrime(9900, 10000));
+
+
+// console.log(reverseNum(13));
+// console.log(reverseNum(31));
+
+// // console.log(isPrime(13));
+// console.log(isPrime(31));
+// console.log(isPrime(17));
+// console.log(isPrime(71));
+// console.log(isPrime(75));
