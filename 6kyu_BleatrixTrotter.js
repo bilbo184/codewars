@@ -39,18 +39,18 @@ console.log(trotter(1692));
 
 // solution 2
 
-// function trotter(n) {
 
-//   let term = 0
-//   ,   seen = new Set();
+function trotter(n) {
+  let term = 0;
+  let seen = new Set();
+  if(!n){
+    return 'INSOMNIA';
+  }
+  while (seen.size < 10 && (term += n)){
+    for (let digit of `${term}`){
+      seen.add(digit);
+    }
+  }
+  return term;
   
-//   if (!n) 
-//     return 'INSOMNIA';
-
-//   while (seen.size < 10 && (term += n))
-//     for (let digit of `${term}`)
-//       seen.add(digit);
-
-//   return term;
-  
-// }
+}
