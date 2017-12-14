@@ -27,7 +27,10 @@
 
 
 function maxBall(v0) {
-  v0 *= 1000/360;
-  const g = 9.81, secondsToTenths = 10;
+  v0 = v0 * 1000/360;
+  const g = 9.81;
   return Math.round(v0/g);
 }
+
+console.log(maxBall(15)); // 4
+console.log(maxBall(25)); // 7
