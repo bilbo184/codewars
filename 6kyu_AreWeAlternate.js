@@ -14,3 +14,20 @@
 function isAlt(word) {
   return !/[aeiou]{2}|[^aeiou]{2}/.test(word);
 }
+
+// console.log(boolieArr("amazon"));
+// console.log(boolieArr("apple"));
+// console.log(boolieArr("banana"));
+
+
+// solution 2
+
+function boolieArr(str){
+  return str.split('').map(function(el){
+    return el.match(/[aeiou]/) ? true : false;
+  }).join(' ');
+}
+
+function isAlt(word){
+ return boolieArr(word).match(/\b(\w+)\s+\1\b/g) === null? true: false;
+}
