@@ -15,17 +15,17 @@
 // //>>>>> 7
 // The input will always be an array.
 
-function deepCount(arr) {
-    let temp = 0;
-    for(let i = 0; i < arr.length; i++) {
-        if(Array.isArray(arr[i]))
-            temp += deepCount(arr[i]);
-        temp++;
+function deepCount(a) {
+  var len = a.length;
+  for(var i = 0; i < a.length; i++){
+    if(Array.isArray(a[i])){
+      len+=deepCount(a[i]);
     }
-    return temp;
+  }
+  return len;
 }
-
 
 console.log(deepCount([1, 2, 3])); // 3
 console.log(deepCount(["x", "y", ["z"]])); // 4
 console.log(deepCount([1, 2, [3, 4, [5]]])); // 7 
+
