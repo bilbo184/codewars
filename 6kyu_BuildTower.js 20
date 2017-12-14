@@ -29,6 +29,10 @@ let towerBuilder = function(n) {
   return arr;
 }
 
+for(let i = 1; i <= n; i++) {
+    arr.push(" ".repeat(n-i)+"*".repeat((i*2)-1)+" ".repeat(n-i));
+  }
+
 console.log(towerBuilder(3)); // [ '  *  ', ' *** ', '*****' ]
 console.log(towerBuilder(5)); // [ '    *    ', '   ***   ', '  *****  ', ' ******* ', '*********' ]
 
