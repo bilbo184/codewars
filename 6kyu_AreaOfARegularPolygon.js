@@ -14,3 +14,9 @@ function areaOfRegularPolygon(s) {
     let area = Math.pow(len, 2) * sides / (4 * Math.tan(Math.PI / sides));
     return area.toFixed(2) + ' sq.' + unit;
 }
+
+console.log(areaOfRegularPolygon("4 sides of 5 cm each"));
+
+
+
+ // var match = s.match(/^(\d+) sides of (\d+) (\w+) each$/);
