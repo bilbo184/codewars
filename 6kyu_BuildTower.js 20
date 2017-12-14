@@ -1,10 +1,25 @@
 // 6 kyu - Build Tower
-/*
-Build Tower
-Build Tower by the following given argument:
-number of floors (integer and always greater than 0).
-Tower block is represented as *
-*/
+
+// Build Tower
+// Build Tower by the following given argument:
+// number of floors (integer and always greater than 0).
+// Tower block is represented as *
+
+// [
+//   '  *  ', 
+//   ' *** ', 
+//   '*****'
+// ]
+
+// [
+//   '     *     ', 
+//   '    ***    ', 
+//   '   *****   ', 
+//   '  *******  ', 
+//   ' ********* ', 
+//   '***********'
+// ]
+
 
 let towerBuilder = function(n) {
   let arr = [];
@@ -14,6 +29,9 @@ let towerBuilder = function(n) {
   return arr;
 }
 
+console.log(towerBuilder(3)); // [ '  *  ', ' *** ', '*****' ]
+console.log(towerBuilder(5)); // [ '    *    ', '   ***   ', '  *****  ', ' ******* ', '*********' ]
+
 // Alternative
 
-let towerBuild = n => [...Array(n)].map((_,i) => " ".repeat(n-i-1) + "*".repeat(i*2+1) + " ".repeat(n-i-1));
+// let towerBuild = n => [...Array(n)].map((_,i) => " ".repeat(n-i-1) + "*".repeat(i*2+1) + " ".repeat(n-i-1));
