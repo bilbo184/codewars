@@ -10,14 +10,15 @@
 
 // difference([1,2,2,2,3],[2]) == [1,3]
 
-
-function array_diff(a, b) {
-  for(let i = 0; i < a.length; i +=1) {
-    if(b.indexOf(a[i]) > -1) {
-      console.log(a);
-      a.splice(i, 1, "");
+function array_diff(a, b){
+  for(let i = 0; i < a.length; i++){    
+    if(a[i] === b[0]){
+      a.splice(i, 1);
+      i--;
     }
   }
-  
-  return a.filter( a => a);
+  return a;
 }
+
+console.log(array_diff([1,2],[1])); // [2]
+console.log(array_diff([1,2,2,2,3],[2])); // [1,3]
