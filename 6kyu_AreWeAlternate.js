@@ -11,4 +11,6 @@
 // // true
 // Arguments consist of only lowercase letters.
 
-let isAlt = str => !(/[^aeiou]{2,}|[aeiou]{2,}/i.test(str));
+function isAlt(word) {
+  return !/[aeiou]{2}|[^aeiou]{2}/.test(word);
+}
