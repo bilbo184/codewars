@@ -13,10 +13,12 @@
 // If the event is today, return "Today is the day!" 
 // Else, return "x days"
 
-// PS: This is my first kata. I hope you have fun^^ 
 
 let countDays = function(d) {
-  let date = new Date(d), curr = new Date();
+  let date = new Date(d);
+  var curr = new Date();
   let days = Math.round((date - curr) / (1000 * 60 * 60 * 24));
-  return (days >= 1) ? `${days} days` : (days === 0) ? "Today is the day!" : "The day is in the past!";
+  return (days >= 1) ? days + " days" : (days === 0) ? "Today is the day!" : "The day is in the past!";
 }
+
+console.log(countDays("February 28, 2018")); // 74 days
