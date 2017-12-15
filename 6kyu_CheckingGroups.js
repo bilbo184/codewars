@@ -26,6 +26,32 @@
 // It should return True if the string is empty or otherwise grouped correctly, or 
 // False if it is grouped incorrectly.
 
+
+function groupCheck(s) {
+  var match = {"(":")", "[":"]","{":"}"};
+  var stack= [];
+  var str = s.split('');
+  for(var i in str){
+    if(match[str[i]]){
+      stack.push(str[i]);
+    }else{
+     if(str[i] !== match[stack.pop()]){
+       return false;
+     }
+    }
+  }
+ 
+  return stack.length === 0;
+}
+
+
+
+console.log(groupCheck("()")); // true
+console.log(groupCheck("{(})")); // false
+console.log(groupCheck("[])")); // false
+
+// solution 2
+
 function groupCheck(s) {
   let arr = [];
   if(s.length % 2 === 1) { return false; }
@@ -39,3 +65,12 @@ function groupCheck(s) {
   }
   return true;
 }
+
+// solution 3
+
+ function groupCheck(s){
+   var r = /\{\}|\[\]|\(\)/;
+   while(r.test(s))
+     s = s.replace(r, '');  
+   return !s.length;   
+ }
