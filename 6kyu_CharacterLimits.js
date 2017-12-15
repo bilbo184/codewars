@@ -29,9 +29,30 @@
 // charCheck("Cara Hertz", 5, true) should return [ false, "Cara " ]
 // charCheck("Cara Hertz", 5, false) should return [ false, "CaraH" ]
 
-let charCheck = function(text, max, spaces) {    
+var charCheck = function(text, max, spaces) {    
+
     if(!spaces)
-      text = text.replace(/\s/g, "");
+    text = text.replace(/\s/g, "");
     let length = text.length;
     return (length <= max) ? [true, text] : [false, text.substr(0, max)];
-}
+  
+};
+
+console.log(charCheck("Cara Hertz", 10, true));
+console.log(charCheck("Cara Hertz", 9, false));
+console.log(charCheck("Cara Hertz", 5, true));
+console.log(charCheck("Cara Hertz", 5, false));
+console.log(charCheck("But, as I pointed out, anyone complaining about standing downwind was lying. There was no wind.", 75, true));
+// [false, "But, as I pointed out, anyone complaining about standing downwind was lying"]
+console.log(charCheck("I have no notice period on Phobos. I can start immediately.", 50, true));
+// [false, "I have no notice period on Phobos. I can start imm"]
+
+
+
+
+// solution 2
+
+// function charCheck(text, max, spaces){
+//   text = spaces? text : text.replace(/ /g, '');
+//   return [text.length <= max, text.substring(0, max)]
+// };
