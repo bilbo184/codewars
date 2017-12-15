@@ -1,6 +1,5 @@
-// 6 kyu - Clock in Mirror
-
 // Description:
+
 // Clock in Mirror
 
 // Peter can see a clock in the mirror from the place he sits in the office. 
@@ -14,22 +13,54 @@
 // Please complete the method which is provided with mirror time as string, and 
 // return the real time as string.
 
-let WhatIsTheTime = function(str) {
-  if(str === "12:00" || str === "06:00") { return str; }
-  if(str === "04:00") { return "08:00"}
-  if(str === "08:00") { return "04:00"}
+// let WhatIsTheTime = function(str) {
+//   if(str === "12:00" || str === "06:00"){ return str; }
+//   if(str === "04:00") { return "08:00"}
+//   if(str === "08:00") { return "04:00"}
   
-  str = str.split(":");
-  let hour = str[0]; 
-  let min = ((60-str[1]+"").length > 1) ? 60-str[1] : `0${60-str[1]}`;
-  
-  if(+hour >= 11 && +min > 0) {
-    return (+hour === 12) ? `11:${min}` : `12:${min}`;
+function WhatIsTheTime(timeInMirror) {
+  var arr = timeInMirror.split(':');
+  var hours = arr[0];
+  var min = arr[1];
+  hours = min === '00' ? 12 - hours : 11 - hours;
+  if (hours === 0) hours = 12;
+  if (hours === -1) hours = 11;
+  min = min === '00' ? '00' : 60 - min;
+  if (min.toString().length < 2) {
+    min = '0' + min;
   }
-  
-  
-  if(11-hour <= 9) {
-    return `0${11-hour}:${min}`;
+   if (hours.toString().length < 2) {
+    hours = '0' + hours;
   }
-  return `${11-hour}:${min}`;
+
+  return (hours + ':' + min);
 }
+
+
+console.log(WhatIsTheTime("06:35")); // "05:25"
+console.log(WhatIsTheTime("11:59")); // "12:01"
+console.log(WhatIsTheTime("12:02")); // "11:58"
+console.log(WhatIsTheTime("04:00")); // "08:00"
+console.log(WhatIsTheTime("06:00")); // "06:00"
+console.log(WhatIsTheTime("12:00")); // "12:00"
+
+
+
+// soution 2
+
+// Number.prototype.mod = function(n) {
+//   return ((this % n) + n) % n;
+// };
+
+// function whatIsTheTime(mirrored) {
+//   const [mh, mm] = mirrored.split(':').map(Number);
+//   const m = (-mm).mod(60);
+//   const h = (-mh - (m && 1)).mod(12) || 12;
+//   return [h, m].map(n => ('0' + n).slice(-2)).join(':');
+// }
+
+// const WhatIsTheTime = whatIsTheTime;
+
+
+
+
