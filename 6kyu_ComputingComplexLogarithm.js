@@ -8,4 +8,11 @@
 // Please return null/NULL/nil/None (C#: throw an ArgumentException, Java: throw 
 // 	an ArithmeticException) if this happens.
 
-let log = ([real, imag]) => (real) ? [Math.log(Math.hypot(real,imag)), Math.atan2(imag,real)] :  null;
+function log([real, imag]){
+  return (real) ? [Math.log(Math.hypot(real,imag)), Math.atan2(imag,real)] :  null;
+}
+
+console.log(log([20,0])); //[Math.log(20),0]
+console.log(log([-1, 0])); // [0,Math.PI]
+console.log(log([1, 1])); // [Math.log(Math.SQRT2),Math.PI/4]
+console.log(log([0, 0])); // null
