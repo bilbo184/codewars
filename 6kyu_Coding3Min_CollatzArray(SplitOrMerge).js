@@ -29,6 +29,32 @@
 //     n=6: [23,23,23,23,5,5,5,5,5,5]
 //     n=... [...]
 
+function sc(arr,n) {
+ var res = [];
+ for(var i = 0; i < arr.length; i++){
+  if(arr[i] % 2 === 1 && arr[i+1] != null){
+    res.push(arr[i] * 3+1 + (arr[i+1]));
+    i++;
+  }else if(arr[i] % 2 === 1 && arr[i+1] == null){
+    res.push(arr[i++] * 3+1);
+  }else if(arr[i] % 2 === 0){
+    res.push(arr[i]/2,arr[i]/2);
+  }
+ }
+ return (n) ? sc(res,n-1):arr;
+}
+
+console.log(sc([3,4,5],0));  // [3,4,5]
+console.log(sc([3,4,5],1));  // [14,16]
+console.log(sc([3,4,5],2));  // [7,7,8,8]
+console.log(sc([3,4,5],3));  // [29,4,4,4,4]
+console.log(sc([3,4,5],4));  // [92,2,2,2,2,2,2]
+console.log(sc([3,4,5],5));  // [46,46,1,1,1,1,1,1,1,1,1,1,1,1]
+console.log(sc([3,4,5],6));  // [23,23,23,23,5,5,5,5,5,5]
+console.log(sc([3,4,5],7));  // [93,93,21,21,21]
+
+
+// solution 2
 
 function sc(arr,n) {
   let res = [];
