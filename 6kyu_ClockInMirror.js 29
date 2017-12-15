@@ -1,3 +1,5 @@
+// 6 kyu - Clock In Mirror
+
 // Description:
 
 // Clock in Mirror
@@ -13,29 +15,57 @@
 // Please complete the method which is provided with mirror time as string, and 
 // return the real time as string.
 
-// let WhatIsTheTime = function(str) {
-//   if(str === "12:00" || str === "06:00"){ return str; }
-//   if(str === "04:00") { return "08:00"}
-//   if(str === "08:00") { return "04:00"}
-  
 function WhatIsTheTime(timeInMirror) {
   var arr = timeInMirror.split(':');
   var hours = arr[0];
   var min = arr[1];
-  hours = min === '00' ? 12 - hours : 11 - hours;
-  if (hours === 0) hours = 12;
-  if (hours === -1) hours = 11;
-  min = min === '00' ? '00' : 60 - min;
+
+  if( min === "00"){
+    hours = 12 - hours;
+  }else{
+    hours = 11 - hours;
+  }
+  if(hours === 0){
+    hours = 12;
+  }
+  if(hours === -1){
+    hours = 11;
+  }
+  if( min !== '00'){
+    min = 60 - min;
+  }else{
+    min = min;
+  }
   if (min.toString().length < 2) {
     min = '0' + min;
   }
-   if (hours.toString().length < 2) {
+  if (hours.toString().length < 2) {
     hours = '0' + hours;
   }
 
   return (hours + ':' + min);
 }
 
+// function WhatIsTheTime(timeInMirror) {
+  // var arr = timeInMirror.split(':');
+  // var hours = arr[0];
+  // var min = arr[1];
+  // console.log(hours);
+  // console.log(min);
+  // hours = min === '00' ? 12 - hours : 11 - hours;
+  // console.log(hours);
+  // if (hours === 0) hours = 12;
+  // if (hours === -1) hours = 11;
+  // min = min === '00' ? '00' : 60 - min;
+  // if (min.toString().length < 2) {
+  //   min = '0' + min;
+  // }
+  // if (hours.toString().length < 2) {
+  //   hours = '0' + hours;
+  // }
+
+  // return (hours + ':' + min);
+// }
 
 console.log(WhatIsTheTime("06:35")); // "05:25"
 console.log(WhatIsTheTime("11:59")); // "12:01"
@@ -60,6 +90,7 @@ console.log(WhatIsTheTime("12:00")); // "12:00"
 // }
 
 // const WhatIsTheTime = whatIsTheTime;
+
 
 
 
