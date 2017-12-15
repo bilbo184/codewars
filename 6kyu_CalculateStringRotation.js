@@ -18,14 +18,25 @@
 // "Esham", "Esham" => 0
 // "dog", "god" => -1
 
+
 let rotate = function(str){
-    return str.charAt(str.length-1) + str.substr(0, str.length-1);
-}
+    return str.slice(-1).concat(str.substr(0, str.length-1));
+};
 
 let shiftedDiff = function(first, second){
-    for(let i = 0; i <= second.length; i++){
-        if(first === second) { return i; }
-        first = rotate(first);
+    var count = 0;
+    for(let i = 0; i < second.length; i++){
+    if(first === second){
+      return count;
+    }else if(first !== second){
+      first = rotate(first);
+      count++;
+    }
     }
     return -1;
-}
+};
+
+console.log(shiftedDiff("coffee", "eecoff")); // 2
+console.log(shiftedDiff("eecoff", "coffee")); // 4
+console.log(shiftedDiff("moose", "Moose")); // -1
+console.log(shiftedDiff("isn't", "'tisn")); // 2
