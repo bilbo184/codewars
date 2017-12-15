@@ -5,12 +5,15 @@
 // Write simple .camelcase method for strings. All words must have their first letter 
 // capitalized without spaces.
 
-// For instance:
 
-// 'hello case'.camelcase => HelloCase
-// 'camel case word'.camelcase => CamelCaseWord
-// Don't forget rate this kata! Thanks :)
 
 String.prototype.camelCase = function(){
-    return this.split(" ").map(a => a.charAt(0).toUpperCase() + a.slice(1)).join("")
-}
+    return this.split(' ').map(function(val, i){
+      return val.charAt(0).toUpperCase()+val.slice(1);
+    }).join('');
+};
+
+
+console.log("hello case".camelCase()); // HelloCase
+console.log('camel case word'.camelCase()); // CamelCaseWord
+
