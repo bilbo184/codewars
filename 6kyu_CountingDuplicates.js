@@ -13,4 +13,14 @@
 // "Indivisibilities" -> 2 # 'i' and 's'
 // "aa11" -> 2 # 'a' and '1'
 
-let duplicateCount = str => text.toLowerCase().split('').sort().join('').match(/([^])\1+/ || []).length;
+function duplicateCount(str){
+  str =  str.toLowerCase().split("").sort().join('').match((/([^])\1+/g) || []);
+  return str ===  null ? 0 : str.length;
+}
+
+console.log(duplicateCount("")); // 0
+console.log(duplicateCount("abcde")); // 0
+console.log(duplicateCount("aabbcde")); // 2
+console.log(duplicateCount("aabBcde")); // 2
+console.log(duplicateCount("Indivisibility")); // 1
+console.log(duplicateCount("Indivisibilities")); // 2
