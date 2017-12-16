@@ -24,4 +24,16 @@
 // Note: In case of an empty array return 0. You will not be tested with invalid input 
 // (input will always be an array)
 
-const countSmileys = arr => arr.filter(a=>/[:|;][\-|\~]?[)|D]/.test(a)).length;
+
+function countSmileys(arr) {
+  return arr.filter(function(a){
+   return (/[:|;][~|-]?[)|D]/.test(a));
+  }).length;
+}
+
+
+
+console.log(countSmileys([':)', ';(', ';}', ':-D', ':~'])); // 2
+console.log(countSmileys([';D', ':-(', ':-)', ';~)'])); // 3
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D'])); // 1
+
