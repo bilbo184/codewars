@@ -15,7 +15,16 @@
 
 // "(( @" => "))(("
 
-let duplicateEncode = str => {
-  str = str.toLowerCase().split("");
-  return str.map( a => (str.indexOf(a) === str.lastIndexOf(a)) ? "(" : ")").join("");
-}
+function duplicateEncode(str){
+ str = str.toLowerCase().split('');
+  return str.map(function(a){
+    return str.indexOf(a) === str.lastIndexOf(a) ? "(" : ")";
+  }).join('');
+}      
+
+
+console.log(duplicateEncode("din")); // (((
+console.log(duplicateEncode("recede")); // ()()()
+console.log(duplicateEncode("Success")); // )())())
+console.log(duplicateEncode("(( @")); // ))((
+
