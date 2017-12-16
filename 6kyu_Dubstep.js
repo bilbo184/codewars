@@ -33,4 +33,14 @@
 // songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB")
 // =>  WE ARE THE CHAMPIONS MY FRIEND
 
-let songDecoder = str => str.replace(/(WUB)+/g," ").trim()
+function songDecoder(str){
+  return str.replace(/(WUB)+/g, " ").trim();
+}
+
+
+
+console.log(songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB")); //
+console.log(songDecoder("AWUBBWUBC")); // "A B C"
+console.log(songDecoder("AWUBWUBWUBBWUBWUBWUBC")); // "A B C"
+console.log(songDecoder("WUBAWUBBWUBCWUB")); // "A B C"
+
