@@ -16,9 +16,13 @@
 // decipherThis('72olle 103doo 100ya'); // 'Hello good day'
 // decipherThis('82yade 115te 103o'); // 'Ready set go'
 
-let decipherThis = function(str) {
-  return str.split(" ")
-            .map(a => a.replace(/[\d]+/, s => String.fromCharCode(s))
-            .replace(/^(.)(.)(.*)(.)$/, "$1$4$3$2"))
-            .join(' ');
+function decipherThis (str) {
+  return str.split(' ').map(function(a){
+    return a.replace(/\d+/, s => String.fromCharCode(s)).replace(/^(.)(.)(.*)(.)/, "$1$4$3$2");
+  }).join(' ');
+
 }
+
+
+console.log(decipherThis('72olle 103doo 100ya')); // 'Hello good day'
+console.log(decipherThis('82yade 115te 103o')); //'Ready set go'
