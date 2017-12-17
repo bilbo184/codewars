@@ -36,12 +36,41 @@
 
 // If you are given an array with multiple answers, return the lowest correct index.
 
-let findEvenIndex = function(arr) {
-  let right = arr.reduce((a,b) => a + b, 0), left = 0;
-  for(let i = 0; i < arr.length; i++) {
-    if(i > 0) left += arr[i-1];
-    right -= arr[i];
-    if(left === right) return i;
+function findEvenIndex(arr){
+  var right  = arr.reduce(function(a, b){
+    return a + b;
+  },0);
+
+  var left = 0;
+  for(var i = 0; i < arr.length; i++){
+  if(i > 0){
+  left += arr[i-1];
+  }
+  right -= arr[i];
+  if(left === right){
+    return i;
+  }    
   }
   return -1;
 }
+
+
+
+console.log(findEvenIndex([1,2,3,4,3,2,1])); // 3
+console.log(findEvenIndex([1,100,50,-51,1,1])); // 1
+console.log(findEvenIndex([1,2,3,4,5,6])); // -1 
+console.log(findEvenIndex([20,10,30,10,10,15,35])); // 3 
+
+
+// solution 2
+
+function findEvenIndex(arr)
+{
+  for(var i=1; i<arr.length-1; i++) {
+    if(arr.slice(0, i).reduce((a, b) =>  a+b) === arr.slice(i+1).reduce((a, b) =>  a+b)) {
+      return i;
+    }
+  }
+  return -1;
+}
+
