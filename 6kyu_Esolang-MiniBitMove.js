@@ -23,12 +23,25 @@
 // Result: 00110110110101
 // After you're done, feel free to make translations and discuss this kata.
 
+
 function interpreter(tape, array) {
-    let tapeIdx = 0, index = 0;
-    array = array.split("").map(a=>+a);
-    while(index != array.length){
-        (tape[tapeIdx] === '0') ? index++ : array[index] = ~~!(array[index]);
-        (tapeIdx >= tape.length-1) ? tapeIdx = 0: tapeIdx++;
+  var pointer = 0;
+  array = array.split('');
+  while(pointer < array.length){
+    for(var i = 0; i < tape.length; i++){
+      if(tape[i] == '1') {
+        array[pointer] = array[pointer] == '0'?'1':'0';
+      }
+      if(tape[i] == '0') {
+        pointer++;
+      }
+      if(pointer > array.length-1) break;
     }
-    return array.join("");
+  }
+  return array.join('');
 }
+
+console.log(interpreter("10", "1100101")); // 0011010
+console.log(interpreter("100", "1111111111")); // 0101010101
+console.log(interpreter("10", "11001001001010")); // 00110110110101
+
