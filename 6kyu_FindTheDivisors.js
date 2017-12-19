@@ -11,13 +11,17 @@
 // divisors(13); //should return "13 is prime"
 // You can assume that you will only get positive integers as inputs.
 
-let divisors = function(num) {
-  let arr = [], div = 2;
-  while(div < num) {
-    if(num % div === 0) {
-      arr.push(div);
+
+function divisors(num){
+  var arr = [];
+  for(var i = 2; i < num; i++){
+    if(num%i === 0){
+      arr.push(i);
     }
-    div += 1;
   }
-  return (arr.length) ? arr : num + " is prime";
+  return arr.length > 0 ? arr : num + " is prime";
 }
+
+console.log(divisors(12)); // 3
+console.log(divisors(25)); // 1
+console.log(divisors(13)); // 1
