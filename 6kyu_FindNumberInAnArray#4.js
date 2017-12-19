@@ -22,13 +22,27 @@
 // should run as fast as a rocket ;-)
 
 function mostAppear(arr) {
-  let idx = 0, count = 1;
+  let index = 0;
+  let count = 1;
   for (let i = 1; i < arr.length; i++) {
-    (arr[idx] === arr[i]) ? ++count : --count;
+    if (arr[index] === arr[i]) {
+      ++count;
+    } else {
+      --count;
+    }
     if (count === 0) {
-      idx = i
-      count = 1
+      index = i;
+      count = 1;
     }
   }
-  return arr[idx];
+  return arr[index];
 }
+
+
+console.log(mostAppear([0,1,3,3,3,3,3,1,0])); // 3
+console.log(mostAppear([1,2,1,3,1,4,1,5,1])); // 1
+console.log(mostAppear([1,1,1,3,3,3,1,1,1,5,5,5,1,1])); // 1
+console.log(mostAppear([9,9,9,9,9,9,9,9,8])); // 9
+console.log(mostAppear([9,9,9,9,9,9,9,9,9])); // 9
+
+
