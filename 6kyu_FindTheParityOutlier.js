@@ -21,7 +21,7 @@ function findOutlier(arr){
   var arr1 = [];
   var arr2 = [];
   for(var i = 0; i < arr.length; i++){
-    if(arr[i]%2 === 1 || arr[i]%2 === -1){
+    if(arr[i]%2 !== 0){
       arr1.push(arr[i]);
     }else{
       arr2.push(arr[i]);
@@ -29,6 +29,7 @@ function findOutlier(arr){
   }
   return arr1.length === 1 ? arr1[0] : arr2[0];
 }
+
 
 console.log(findOutlier([0, 1, 2])); // 1
 console.log(findOutlier([1, 2, 3])); // 2
