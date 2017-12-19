@@ -31,18 +31,31 @@
 // In case the sequence is empty, too short, or doesn't contain a match, the function should 
 // return and empty object {}.
 
+
 function transFactors(seq) {
-  let obj = { ATF6: "TGACGT", CREB: "TGACGCA", cMyc: "CACGTG", Gata1: "GATT", AhR: "TGCGTG"};
-  let returns = {};
-  for(let factor in obj) {
-    for(let i = 0; i <= seq.length; i+=1){
-      let idx = seq.indexOf(obj[factor], i) + 1;
-      if(idx <= 0) break;
-      else {
-        (returns.hasOwnProperty(factor)) ? returns[factor].push(idx) : returns[factor] = [idx];
-        i = idx;
-      }
-    }  
+  var next;
+  var positions = {};
+  var obj = { ATF6: "TGACGT",
+              CREB: "TGACGCA",
+              cMyc: "CACGTG",
+              Gata1: "GATT",
+              AhR: "TGCGTG"
+            };
+  
+  for (var key in obj) {
+    next = -1;
+    while (next = seq.indexOf(obj[key], next)+1) {
+      positions[key] = positions[key] || [];
+      console.log(next);
+      positions[key].push(next);
+    }
   }
-  return returns;
+  
+  return positions;
 }
+
+console.log(transFactors("ATGGCTGACGTCGTCATGGCGCCCCGATTGAACGATTCCTCCTCCT"));
+// { ATF6: [ 6 ], Gata1: [ 26, 34 ] }
+console.log(transFactors("TGACGTGACGT")); // { ATF6: [ 1, 6 ] }
+console.log(transFactors("CACGTGACGT")); // { ATF6: [ 5 ], cMyc: [ 1 ]
+console.log(transFactors("TGCGTGCGTG")); // { AhR: [ 1, 5 ] }
