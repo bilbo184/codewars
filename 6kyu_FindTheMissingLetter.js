@@ -20,10 +20,13 @@
 // I have also created other katas. Take a look if you enjoyed this kata!
 
 function findMissingLetter(array) {
-    array = array.map(a => a.charCodeAt(0));
-    for(let i = 0; i < array.length; i++) {
-        if(array[i] + 1 != array[i+1]){
-            return String.fromCharCode(array[i]+1)
-        }
+  for(var i = 0; i < array.length; i++){
+    if(array[i+1] !== String.fromCharCode(array[i].charCodeAt()+1)){
+      return String.fromCharCode(array[i].charCodeAt()+1);
     }
+  }
 }
+
+
+console.log(findMissingLetter(['a','b','c','d','f'])); // 3
+console.log(findMissingLetter(['O','Q','R','S'])); // 1
