@@ -17,16 +17,22 @@
 // of the last X elements - and returns the first n elements of the so seeded 
 // sequence.
 
-let Xbonacci = function(arr, times) {
-  let x = arr.length, temp = 0;
-  
-  while(arr.length < times) {
-    temp = 0;
-    for(let i = x; i > 0; i -=1) {
-      temp += arr[arr.length-i];
-    }
-    arr.push(temp);
-  }
-  
-  return arr.slice(0, times);
+function Xbonacci(signature,n){
+ var x = signature.length;
+ var temp = 0;
+ while(signature.length < n){
+   temp = 0;
+   for(var i = x; i > 0; i--){
+     temp += signature[signature.length - i];
+   }
+   signature.push(temp);
+ }
+ return signature.slice(0, n);
 }
+
+
+console.log(Xbonacci([0,1],10)); // [ 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 ]
+console.log(Xbonacci([1,1],10)); // [ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 ]
+console.log(Xbonacci([0,0,0,0,1],12)); // [ 0, 0, 0, 0, 1, 1, 2, 4, 8, 16, 31, 61 ]
+console.log(Xbonacci([1,0,0,0,0,0,1],10)); // [ 1, 0, 0, 0, 0, 0, 1, 2, 3, 6 ]
+console.log(Xbonacci([1,0,0,0,0,0,0,0,0,0],20)); // [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 4, 8, 16, 32, 64, 128, 256 ]
