@@ -15,7 +15,18 @@
 // balance("!!???!????","??!!?!!!!!!!") === "Balance"
 
 function balance(left,right){
-  left = left.split("").reduce((a,b)=>a+(b==="!"?2:3),0);
-  right = right.split("").reduce((a,b)=>a+(b==="!"?2:3),0);
-  return (left === right) ? "Balance" : (left > right) ? "Left" : "Right"
+ left = left.split('').reduce(function(a, b){
+   return a + ( b === "!" ? 2 : 3);
+ },0);
+ console.log(left);
+ right = right.split('').reduce(function(a, b){
+  return a + (b === "!" ? 2 : 3);
+ },0);
+ console.log(right);
+ return left === right ? "Balance" : (left > right) ? "Left" : "Right";
 }
+
+console.log(balance("!!","??")); // "Right"
+console.log(balance("!??","?!!")); // "Left"
+console.log(balance("!?!!","?!?")); // "Left"
+console.log(balance("!!???!????","??!!?!!!!!!!")); // "Balance"
