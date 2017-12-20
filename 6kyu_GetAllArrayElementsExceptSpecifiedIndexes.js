@@ -17,6 +17,16 @@
 // var array2 = array.except(1);
 // // array2 should contain ['a', 'c', 'd', 'e'];
 
-Array.prototype.except = function(keys) {
-  return this.filter((_, i) => keys[0] ? !keys.some((a) => i == a) : keys != i);
-}
+Array.prototype.except = function(keys){
+  if(!Array.isArray(keys)) {
+    keys = [keys];
+  }
+  return this.filter(function(val, i){
+    return (!keys.includes(i));
+  });
+};
+var array = ['a', 'b', 'c', 'd', 'e'];
+
+console.log(array.except([1,3])); // ['a', 'c', 'e']);
+console.log(array.except(1)); // ['a', 'c', 'd', 'e']);
+console.log(array.except(0)); // ['b', 'c', 'd', 'e']);
