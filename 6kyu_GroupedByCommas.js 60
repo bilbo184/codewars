@@ -47,5 +47,5 @@ console.log(groupByCommas(35235235)); // "35,235,235"
 // }
 
 // function groupByCommas(n) {
-//   return n.toLocaleString()
+//   return n.toLocaleString():
 // }
