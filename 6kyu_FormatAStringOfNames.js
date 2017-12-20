@@ -15,15 +15,21 @@
 // list([])
 // // returns ''
 
-let list = function(names) {
-  if(names.length <= 1) {
-    return names.length ? names[0].name : '';
+function list(names){
+  if(names.length <= 1){
+    return names.length === 1 ? names[0].name : "";
   }
-  let str = '', last = names.pop();
-  
-  for(let x = 0; x < names.length; x+=1) {
-    str += (names[x].name) + ", ";
+  var str = '';
+  var last = names.pop();
+  for(var i = 0; i < names.length; i++){
+    str = str + names[i].name +", ";
   }
-  
-  return str.substring(0, str.length - 2) + ` & ${last.name}`;
+  return str.slice(0, str.length-2)+" & " + last.name;
 }
+
+
+
+console.log(list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])); // Bart, Lisa & Maggie
+console.log(list([ {name: 'Bart'}, {name: 'Lisa'} ])); // Bart & Lisa
+console.log(list([ {name: 'Bart'} ])); // Bart
+console.log(list([])); // ""
