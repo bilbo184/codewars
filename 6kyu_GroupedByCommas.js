@@ -17,6 +17,35 @@
 //  1000000  ->   "1,000,000"
 // 35235235  ->  "35,235,235"
 
+
 function groupByCommas(n) {
-  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+var str = n.toString().split('').reverse();
+var string = '';
+for(var i = 0, count = 1; i < str.length; i++, count++){
+  if(count%3 === 0 && i!==str.length-1){
+    string += str[i] + ",";
+  }else{
+    string += str[i];
+  }
 }
+  return string.split('').reverse().join('');
+}
+
+
+console.log(groupByCommas(1)); // "1"
+console.log(groupByCommas(10)); // "10"
+console.log(groupByCommas(100)); // "100"
+console.log(groupByCommas(1000)); // "1,000"
+console.log(groupByCommas(10000)); // "10,000"
+console.log(groupByCommas(100000)); // "100,000"
+console.log(groupByCommas(1000000)); // "1,000,000"
+console.log(groupByCommas(35235235)); // "35,235,235"
+
+
+// function groupByCommas(n) {
+//   return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+// }
+
+// function groupByCommas(n) {
+//   return n.toLocaleString();
+// }
