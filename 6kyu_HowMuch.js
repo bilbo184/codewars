@@ -36,11 +36,20 @@
 // income - (7 * price of boat) = 2
 
 function howmuch(m, n) {
-    if(m === n) { return []; }
-    let min = Math.min(m,n), max = Math.max(m, n), arr = [];
+    if(m === n) { 
+      return [];
+    }
+    var min = Math.min(m,n);
+    var max = Math.max(m, n);
+    var arr = [];
     for(i = min; i <= max; i++){
       if((i-1)/9 % 1 === 0 && (i-2)/7 % 1 === 0)
-        arr.push(["M: " + i, "B: " + (i-2)/7, "C: " + (i-1)/9])
+        arr.push(["M: " + i, "B: " + (i-2)/7, "C: " + (i-1)/9]);
     }
     return arr;
 }
+
+ 
+ 
+console.log(howmuch(1, 100)); // [ [ 'M: 37', 'B: 5', 'C: 4' ], [ 'M: 100', 'B: 14', 'C: 11' ] ]
+console.log(howmuch(2950, 2950)); // []
