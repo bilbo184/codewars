@@ -59,3 +59,29 @@ console.log(transFactors("ATGGCTGACGTCGTCATGGCGCCCCGATTGAACGATTCCTCCTCCT"));
 console.log(transFactors("TGACGTGACGT")); // { ATF6: [ 1, 6 ] }
 console.log(transFactors("CACGTGACGT")); // { ATF6: [ 5 ], cMyc: [ 1 ]
 console.log(transFactors("TGCGTGCGTG")); // { AhR: [ 1, 5 ] }
+
+
+// solution 2
+
+function transFactors(seq) {
+  var matches = {};
+  var obj = { ATF6: "TGACGT",
+              CREB: "TGACGCA",
+              cMyc: "CACGTG",
+              Gata1: "GATT",
+              AhR: "TGCGTG"
+            };
+for (var i = 0; i < seq.length; i++) {
+     var str = seq.slice(i);
+     for (var key in obj) {
+       if(str.indexOf(obj[key]) > -1) {
+         if(!matches[key]){
+           matches[key] = [i + str.indexOf(obj[key])+1];
+        } else if(matches[key] && !(matches[key].includes(str.indexOf(obj[key])+i+1)) ){
+           matches[key].push(i + str.indexOf(obj[key])+ 1);
+         }
+       }
+     }
+   }
+   return matches;
+}
