@@ -12,12 +12,26 @@
 // All letters will be lower case and all inputs will be valid.
 
 function high(x) {
-    x = x.split(" ");
-    let [max, word] = [0, ""];
-    for(let i = 0; i < x.length; i++) {
-        let temp = x[i].length ? x[i].split("").map(a => a.charCodeAt(0)-96).reduce((a,b) => a + b) : x[i].charCodeAt(0)
-        if(temp > max)
-            [word, max ]= [x[i], temp]
-    }
-    return word;
+  x = x.split(' ');
+  var max = 0;
+  var word = '';
+  for(var i = 0; i < x.length; i++){
+    // var temp = x[i].length ? x[i].split("").map(a => a.charCodeAt(0)-96).reduce((a,b) => a + b)
+    // : x[i].charCodeAt(0);
+     var temp = x[i].length ? x[i].split('').map(function(a){
+       return  a.charCodeAt()-96;
+     }).reduce(function(a, b){
+       return  a+ b;
+     }) : x[i].charCodeAt();
+
+  if(temp > max){
+    word = x[i];
+    max = temp;
+  }
+  }
+  return word;
 }
+ 
+console.log(high('man i need a taxi up to ubud')); // 'taxi'
+console.log(high('what time are we climbing up the volcano')); // 'volcano'
+console.log(high('take me to semynak')); // 'semynak'
