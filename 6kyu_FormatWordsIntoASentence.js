@@ -13,6 +13,21 @@
 // formatWords([]) // should return ""
 
 function formatWords(arr) {
-    arr = (arr) ? arr.filter(a => a.length) : ""
-    return (!arr.length) ? "" : (arr.length === 1) ? arr[0] : arr.slice(0, -1).join(", ") + ` and ${arr.slice(-1)}`
+  if(arr.length <= 1){
+    return (arr.length) ? arr[0] : "";
+  }
+  var last = arr.pop();
+  var str = '';
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] !== ""){
+      str += arr[i] + ", ";
+    }
+  }
+ return str.slice(0, str.length-2) +" and " +last;
 }
+
+
+console.log(formatWords(['ninja', 'samurai', 'ronin'])); // "ninja, samurai and ronin"
+console.log(formatWords(['ninja', '', 'ronin'])); //"ninja and ronin"
+console.log(formatWords(['ninja'])); //"ninja"
+console.log(formatWords([])); // ""
