@@ -39,3 +39,11 @@ function sortTheLaundry(laundry)
       doNothing(laundry[i]);
   }
 }
+
+// solution 2
+
+function sortTheLaundry(laundry){
+  // take care of your grandpa's pants
+  laundry.map((p)=>p.type == 'Pants' && p.owner == 'Grandpa' ? p.smell == 'Fresh' ? p.store() : p.wash() : null)
+}
+
