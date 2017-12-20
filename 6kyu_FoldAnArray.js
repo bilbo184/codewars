@@ -35,9 +35,22 @@
 // I have created other katas. Have a look if you like coding and challenges
 
 
+
 function foldArray(array, runs) {
   array = array.slice();
-  for(let i = 0; i < runs; i++)
-    array.splice(Math.ceil(array.length/2)).reverse().map((a, b) => array[b] = a + array[b]);
+  while(runs > 0){
+  var len = Math.floor(array.length/2);
+  console.log(len);
+  for(var i = 0; i < len; i++){
+   array[i] = array[i]+ array.pop();
+  }
+  runs--;
+  }
   return array;
 }
+
+
+console.log(foldArray([1,2,3,4,5], 1)); // 6, 6, 3
+console.log(foldArray([1,2,3,4,5], 2)); // 9, 6
+
+
