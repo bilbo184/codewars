@@ -20,16 +20,19 @@
 // Return null if input is even number or negative (as it is not possible to print diamond with 
 // 	even number or negative number).
 
-let diamond = function(len) {
-  let dia = "", arr = [];
-  if(len % 2 === 0 || len < 1) { return null; }
-
-  for(let i = len, space = 0; i >= 1; i-=2, space+=1) {
-    arr.push(" ".repeat(space) + "*".repeat(i) + "\n");
-    if(i < len) {
-      arr.unshift(" ".repeat(space) + "*".repeat(i) + "\n");
-    }
+function diamond(n){
+ if (n <= 0 || n%2 === 0){
+    return null;
   }
-  
-  return arr.join('');
+  var arr = [];
+  for(var i = 1; i <= n; i+=2){
+    arr.push(' '.repeat((n-i)/2) + '*'.repeat(i));
+  }
+  return arr.concat(arr.slice(0, arr.length-1).reverse()).join('\n')+'\n';
 }
+console.log(diamond(3)); //
+console.log(diamond(2)); // 
+console.log(diamond(-3)); // 
+console.log(diamond(0)); // 
+console.log(diamond(5)); // 
+
