@@ -9,7 +9,15 @@
 // findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
 // It’s guaranteed that array contains 3 or more numbers.
 
+
 function findUniq(arr) {
-  arr = arr.sort((a,b) => a - b);
-  return (arr.lastIndexOf(arr[0]) === arr.indexOf(arr[0])) ? arr[0] : arr[arr.length-1];
+  arr = arr.sort(function(a, b){
+    return a - b;
+  });
+  console.log(arr);
+ return arr[0] == arr[1] ? arr.pop():arr[0];
 }
+
+console.log(findUniq([ 1, 1, 1, 1, 1, 1 ])); // 2 
+console.log(findUniq([ 0, 0, 0.55, 0, 0 ])); // 0.55
+
