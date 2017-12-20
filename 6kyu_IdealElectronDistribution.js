@@ -18,12 +18,24 @@
 //         atomicNumber(47); should return [2, 8, 18, 19]
 
 
-function atomicNumber(n) {
-    let arr = [];
-    for(let shell = 1; n > 0; shell++) {
-      let curr = 2 * Math.pow(shell, 2);
-      (curr <= n) ? arr.push(curr) : arr.push(n);
-      n = (curr <= n) ? n - curr : 0;
-    }
-    return arr;
+
+function atomicNumber(num) {
+  var c = 1;
+  var arr = [];
+  while (num > c * c * 2) {
+    arr.push(c * c * 2);
+    num -= c * c * 2;
+    c++;
+  }
+  arr.push(num);
+  return arr;
 }
+ 
+ 
+console.log(atomicNumber(1)); // [ 1 ]
+console.log(atomicNumber(10)); // [ 2, 8 ]
+console.log(atomicNumber(11)); // [ 2, 8, 1 ]
+console.log(atomicNumber(47)); // [ 2, 8, 18, 19 ]
+console.log(atomicNumber(100)); // [ 2, 8, 18, 32, 40 ]
+
+
