@@ -8,7 +8,12 @@
 // Notes: - the returned string should only contain lowercase letters
 
 function kebabize(str) {
-  str = str.replace(/[\d]/g, "")
-  str = str.charAt(0).toLowerCase() + str.slice(1);
-  return str.replace(/([A-Z])/g, a => "-"+a.toLowerCase());
+ str = str.replace(/[\d]/g, "");
+ str = str[0].toLowerCase().concat(str.slice(1));
+
+ return str.replace(/[A-Z]/g, a => "-"+a.toLowerCase());
 }
+
+
+console.log(kebabize('camelsHaveThreeHumps')); // 5
+console.log(kebabize('camelsHave3Humps')); // 27
