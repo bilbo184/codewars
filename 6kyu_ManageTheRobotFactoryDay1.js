@@ -35,7 +35,10 @@
 // You can only buy full kilogramms of iron.
 
 function calculateScrap(scraps, numberOfRobots) {
-  return Math.ceil(scraps.reduceRight((a, b) => a*100/(100-b), numberOfRobots * 50));
+  console.log(scraps);
+  return Math.ceil(scraps.reduce(function(a, b){
+    return a*100/(100-b);
+  }, numberOfRobots*50));
 }
 
 console.log(calculateScrap([10], 90)); // 5000
