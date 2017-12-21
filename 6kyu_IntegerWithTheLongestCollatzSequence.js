@@ -40,22 +40,32 @@
 // In this case, our function returns 5, because 5 comes before 32 in our array.
 
 function collatz(num){
-    let len = 0;
-    while(num > 1) {
-        (num % 2 === 0) ? num /= 2 : num = num * 3 + 1;
-        len++;
+    var count = 0;
+    while(num > 1){
+      num % 2 === 1 ? num = num*3+1 : num = num/2;
+      count++;
     }
-    return len;
+   return count;
 }
 
 function longestCollatz(arr){
-    let num = 0, len = 0;
-    for(let i = 0; i < arr.length; i++){
-        let temp = collatz(arr[i]);
-        if(temp > len){
-            num = arr[i];
-            len = temp;
-        }
+  var num = 0;
+  var len = 0;
+  for(var i = 0; i < arr.length; i++){
+    var temp =  collatz(arr[i]);
+    if(temp  > len){
+      num = arr[i];
+      len =  temp ;
     }
-    return num;
+  }
+  return num;
 }
+
+
+console.log(longestCollatz([2, 5, 32])); // 5
+console.log(longestCollatz([1, 5, 27, 4])); // 27
+console.log(longestCollatz([64, 64, 27, 64])); // 27 
+console.log(longestCollatz([75, 226, 113, 340])); // 75 
+console.log(longestCollatz([340, 113, 226, 75])); // 75
+console.log(longestCollatz([75, 113, 226, 75])); // 75
+
