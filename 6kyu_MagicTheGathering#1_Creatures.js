@@ -49,11 +49,22 @@
 // Good luck with your battles!
 
 
-
 function battle(player1, player2) {
-    let min = player1.length > player2.length ? player2.length : player1.length;
-    return {
-        player1 : player1.filter((a, i) => (i < min) ? a[1] - player2[i][0] > 0 : a),
-        player2: player2.filter((b,i) => (i < min) ? b[1] - player1[i][0] > 0 : b)
-    }
+  var min =  player1.length > player2.length ? player2.length : player1.length;
+  return {
+    player1: player1.filter(function(val, i){
+              return (i < min) ? val[1] - player2[i][0] > 0 : val;
+              }),
+    player2: player2.filter(function(ele, j){
+              return (j < min) ? ele[1] - player1[j][0] > 0 : ele;
+              })
+  };
 }
+console.log(battle( [[1, 1], [2, 1], [2, 2], [5, 5]], [[1, 2], [1, 2], [3, 3]]));
+// { 'player1': [[5, 5]],
+//   'player2': [[1, 2], [3, 3]] }
+console.log(battle([[1, 1], [2, 1], [2, 2], [5, 5]], [[1, 2], [1, 2], [3, 3]]));
+// { 'player1': [[5, 5]], 'player2': [[1, 2], [3, 3]] }
+console.log(battle([[1, 1], [2, 1], [2, 2], [5, 5]], [[1, 2], [1, 2], [3, 3]]));
+// { player1: [[5, 5]], player2: [[1, 2], [3, 3]] }
+ 
