@@ -67,4 +67,14 @@ console.log(battle([[1, 1], [2, 1], [2, 2], [5, 5]], [[1, 2], [1, 2], [3, 3]]));
 // { 'player1': [[5, 5]], 'player2': [[1, 2], [3, 3]] }
 console.log(battle([[1, 1], [2, 1], [2, 2], [5, 5]], [[1, 2], [1, 2], [3, 3]]));
 // { player1: [[5, 5]], player2: [[1, 2], [3, 3]] }
- 
+
+
+// solution 2
+
+
+const battle = (player1, player2) => {
+  return {
+    player1: player1.filter((c, i) => !player2[i] || c[1] > player2[i][0]),
+    player2: player2.filter((c, i) => !player1[i] || c[1] > player1[i][0]),
+  }
+}
