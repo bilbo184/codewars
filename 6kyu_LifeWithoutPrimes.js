@@ -16,15 +16,29 @@
 function isPrime(n) {
   if(n === 2) { return true; }
   if(n < 2 || n % 2 === 0) { return false; }
-  for(let i = 3; i <= ~~Math.sqrt(n); i+=2){
+  for(let i = 3; i <= Math.sqrt(n); i+=2){
     if (n % i === 0) { return false;}
   }
   return true;
 }
 
 function solve(n) {
-  let arr = [];
-  for(let i = 1; arr.length <= n; i++)
-    if( !isPrime(i) && !/[2357]/.test(""+i )) { arr.push(i) }
+  var arr = [];
+  for(var i = 1; arr.length <= n; i++){
+    if(!isPrime(i) && !/[2357]/.test(i)) { 
+      arr.push(i);
+      }
+  }  
   return arr.pop();
-};
+}
+
+
+console.log(solve(10)); // 44 
+console.log(solve(50)); // 169
+console.log(solve(100)); // 644
+console.log(solve(150)); // 896
+console.log(solve(200)); // 1060
+console.log(solve(300)); // 1668
+console.log(solve(400)); // 4084
+console.log(solve(500)); // 4681
+
