@@ -25,7 +25,7 @@ function Node(data, next = null) {
 function length(head) {
   let l = 1;
   if(!head) { return 0;}
-  while(head.next !== null) {
+  while(head.next) {
     head = head.next;
     l++;
   }
