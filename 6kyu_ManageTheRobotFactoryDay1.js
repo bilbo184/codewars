@@ -37,3 +37,14 @@
 function calculateScrap(scraps, numberOfRobots) {
   return Math.ceil(scraps.reduceRight((a, b) => a*100/(100-b), numberOfRobots * 50));
 }
+
+console.log(calculateScrap([10], 90)); // 5000
+console.log(calculateScrap([20, 10], 55)); // 3820
+
+
+
+// solution 2
+
+function calculateScrap(scraps, numberOfRobots, robotWeight = 50) {
+  return Math.ceil(scraps.reduceRight((x, y) => x * 100 / (100 - y), numberOfRobots * robotWeight));
+}
