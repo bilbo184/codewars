@@ -5,12 +5,19 @@
 // null (throw an ArgumentOutOfRange exception in C#).
 
 function getExponent(n, p) {
-    if(p < 2) { return null; }
-    let num = 0;
-    
+    if(p < 2) { 
+      return null;
+      }
+    let count = 0;
     while(n % p === 0) {
-        num++;
-        n/=p;
+        count++;
+        n = n/p;
     }
-    return num;
+    return count;
 }
+
+console.log(getExponent(18,1)); // null
+console.log(getExponent(-250,5)); // 3 
+console.log(getExponent(28,3)); // 0
+console.log(getExponent(27,3)); // 3
+
