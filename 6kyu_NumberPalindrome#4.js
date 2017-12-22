@@ -24,21 +24,49 @@
 // palindrome(1221) => 1221
 // palindrome("1221") => "Not valid"
 
+
+
 function isPalindrome(num){
     num = String(num);
     return num === num.split("").reverse().join("");
 }
 
 function palindrome(num){
-    if(typeof num !== "number" || num < 0) { return "Not valid" }
-    num = num < 10 ? 11 : num;
-    let highNum = num, lowNum = num;
-    if(isPalindrome(num)) return num;
-    while(!isPalindrome(highNum))
-        highNum++;
-    while(!isPalindrome(lowNum))
-        lowNum--;
-    return (Math.abs(num-lowNum) === Math.abs(num-highNum) || 
-            Math.abs(num-lowNum) > Math.abs(num-highNum)) ? highNum : lowNum; 
+  if(typeof(num) !== "number" || num < 0){
+    return "Not valid";
+  }
+  num = num < 10 ? 11 : num;
+  if(isPalindrome(num)){
+    return num;
+  }
+  for(var i = 1; i < Infinity; i++){
+    if(isPalindrome(num+i)=== true){
+      return num + i;
     
+    }else if(isPalindrome(num-i)=== true){
+      return num - i;
+  
+    }
+  }
+    return i;
+}
+
+console.log(palindrome(8)); // 11
+console.log(palindrome(281)); // 282 
+console.log(palindrome(1029)); // 1001
+console.log(palindrome(1221)); // 1221
+console.log(palindrome("1221")); // "Not valid"
+
+// solution 2
+
+
+function isPalindrome(num){
+  return (num>10 && num == num.toString().split("").reverse().join(""))? true : false;
+}
+function palindrome(num) {
+  if(!Number.isInteger(num) || num<0) return 'Not valid';
+  for(i=0; 1==1; i++){
+    if(isPalindrome(num+i)) return num+i;
+    if(isPalindrome(num-i)) return num-i;
+  }
 }
