@@ -23,4 +23,15 @@
 
 // Because there is no 10.
 
-makes10=(a,b)=>/10/.test([a+b,a,b])
+makes10 = (a, b) => /10/.test([a, b, a+b]);
+
+
+console.log(makes10(1,10)); // true
+console.log(makes10(1,2)); // false
+console.log(makes10(10,1)); // true
+console.log(makes10(1,11)); // false
+console.log(makes10(1,9)); // true
+console.log(makes10(11,12)); // false
+console.log(makes10(10,10)); // true
+console.log(makes10(20,20)); // false
+
