@@ -15,9 +15,21 @@
 
 // let arr = [0,1];
 
+let arr = [0,1];
+
 function nthFibo(n) {
-    if(!arr[n])
+    if(!arr[n]){
         while(arr.length < n)
             arr.push(arr[arr.length-1] + arr[arr.length-2]);
+    }
     return arr[n-1];
 }
+
+
+console.log(nthFibo(4)); // 2
+
+
+
+// function nthFibo(n) {
+//   return Math.round((1/Math.sqrt(5))*Math.pow((1+Math.sqrt(5))/2,n-1))
+// } 
