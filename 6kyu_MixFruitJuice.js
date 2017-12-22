@@ -20,6 +20,35 @@
 // ['Mango', 'Banana', 'Avocado'] //the price of this juice bottle is (7+5+7)/3 = 
 // $6($6.333333...)
 
+
+function mixFruit(arr) {
+    let f = ['banana', 'orange', 'apple', 'lemon', "grapes"],
+        s = ['avocado', 'strawberry', 'mango'];
+   var arr1 = (arr.map(function(val){
+      return (f.indexOf(val.toLowerCase()) > -1) ? 5 : (s.indexOf(val.toLowerCase()) > -1) ? 7 : 9;
+    }));
+   
+   return Math.round(arr1.reduce(function(a, b){
+     return a + b;
+   },0)/arr1.length);
+    
+}
+
+console.log(mixFruit(['Mango', 'Banana', 'Avocado'])); // 6
+console.log(mixFruit(['watermelon','mango','avocado'])); //  8
+console.log(mixFruit(['avocado', 'strawberry'])); // 7
+
+
+// solution 2
+
+function mixFruit (arr) {
+  var prices = {banana:5,orange:5, apple:5, lemon:5, grapes:5, avocado: 7, strawberry:7,mango:7};
+  return Math.round(arr.reduce((a,b)=> a += prices[b.toLowerCase()] || 9,0)/arr.length);
+}
+
+// solution 3
+
+
 function mixFruit(arr) {
     let f = ['banana', 'orange', 'apple', 'lemon', "grapes"],
         s = ['avocado', 'strawberry', 'mango'];
