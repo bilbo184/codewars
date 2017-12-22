@@ -19,10 +19,15 @@
 // Each value on the table should be equal to the value of multiplying the number 
 // in its first row times the number in its first column.
 
-let multiplicationTable = function(row, col) {
-  let arr = [];
-  for(let num = 1; num <= row; num+=1) {
-    arr.push(Array(col).fill(0).map((_,idx) => (idx+1)*num));
+function multiplicationTable(row, col) {
+  var arr = [];
+  for(var i = 1; i <= row; i++){
+    arr.push(Array(col).fill(0).map(function(val, idx){
+      return (idx+1)*i;
+    }));
   }
   return arr;
 }
+
+
+console.log(multiplicationTable(4, 3));
