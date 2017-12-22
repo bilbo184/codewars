@@ -27,7 +27,15 @@
 // unlokc("toilet"); // => 864538
 
 function unlock(str) {
-    let char = "ABCDEFGHIJKLMNOPQRSTUVWYXZ",
-        num = "22233344455566677778889999"
-    return str.toUpperCase().split("").map(a=>num[char.indexOf(a)]).join("")
+    var char = "ABCDEFGHIJKLMNOPQRSTUVWYXZ";
+    var num =  "22233344455566677778889999";
+    return str.toUpperCase().split('').map(function(a){
+      return num[char.indexOf(a)];
+    }).join('');
 }
+
+
+console.log(unlock("Nokia")); //  66542
+console.log(unlock("Valut")); // 82588
+console.log(unlock("toilet")); // 864538
+
