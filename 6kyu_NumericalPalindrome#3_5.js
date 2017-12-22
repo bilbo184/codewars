@@ -25,23 +25,34 @@
 // palindrome(1294) => "No palindromes found"
 // palindrome("1221") => "Not valid"
 
-function palindrome(num) {
-
-    function isPalindrome(num) {
-        return (String(+num) === num) ? num === num.split("").reverse().join("") : false;
-    }
-
-    if(typeof num !== "number" || num < 0) { return "Not valid" }
-    num = String(num);
-    let len = 2, win = [];
-    while(len <= num.length) {
-        for(let i = 0; i + len <= num.length; i++) {
-            let temp = num.substr(i, len)
-            if(+temp !== 0 && isPalindrome(temp) && win.indexOf(+temp) < 0) {
-                win.push(+temp)
-            }
-        }
-        len++;
-    }
-    return win.length ? win.sort((a,b) => a - b) : "No palindromes found";
+function isPalindrome(num) {
+   return (String(+num) === num) ? num === num.split("").reverse().join("") : false;
 }
+
+function palindrome(num) {
+    if(typeof num !== "number" || num < 0){
+      return "Not valid";
+      }
+    num = String(num);
+    var len = 2;
+    var arr = [];
+    while(len <= num.length){
+      for(var i = 0; i <= num.length- len; i++){
+        var temp = num.substr(i, len);
+        if(Number(temp) !== 0 && isPalindrome(temp) && arr.indexOf(Number(temp)) === -1){
+          arr.push(Number(temp));
+        }
+      }
+      len++;
+    }
+    return arr.length ? arr.sort((a,b) => a - b) : "No palindromes found";
+
+}
+
+    
+console.log(palindrome(1221)); // [22,1221]
+console.log(palindrome(34322122)); // [22,212,343,22122]
+console.log(palindrome(1001331)); // [33,1001,1331]
+console.log(palindrome(1294)); // "No palindromes found"
+console.log(palindrome("1221")); // "Not valid"
+
