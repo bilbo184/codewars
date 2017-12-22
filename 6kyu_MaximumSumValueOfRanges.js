@@ -33,10 +33,21 @@
 //  maxSum([1,-2,3,4,-5,-4,3,2,1],[[1,3]]) === 5
 //  maxSum([1,-2,3,4,-5,-4,3,2,1],[[1,4],[2,5]]) === 0
 
+
+
+
 function maxSum(arr, range) {
-    let sumPoints = Array(range.length).fill(0);
-    for(let i = 0; i < range.length; i++)
-        for(let j = range[i][0]; j <= range[i][1]; j++)
-            sumPoints[i] += arr[j];
-    return Math.max(...sumPoints);
+  var sumPoints = Array(range.length).fill(0);
+  for(var i = 0; i < range.length; i++){
+    for(var j = range[i][0]; j <= range[i][1]; j++){
+      sumPoints[i]+= arr[j];
+    }
+  }
+  return Math.max(...sumPoints);
 }
+
+
+console.log(maxSum([1,-2,3,4,-5,-4,3,2,1],[[1,3],[0,4],[6,8]])); // 6
+console.log(maxSum([1,-2,3,4,-5,-4,3,2,1],[[1,3]])); // 5
+console.log(maxSum([1,-2,3,4,-5,-4,3,2,1],[[1,4],[2,5]])); // 0
+
