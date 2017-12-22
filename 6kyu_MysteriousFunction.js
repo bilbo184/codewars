@@ -14,9 +14,26 @@
 // desperation but then.... came YOU the SUPER-AWESOME programmer. Will you be able 
 // to understand the mystery of this function and rewrite it?
 
-var getNum = function(n) {
-    return String(n).split("")
-                    .map(a=>/[069]/
-                    .test(a) ? 1 : a==="8" ? 2 : 0)
-                    .reduce((a,b) => a + b)
+function getNum(n){
+  return n.toString().split('').map(function(a){
+    return /[069]/.test(a) ? 1 : a ==="8" ? 2 : 0;
+  }).reduce(function(a, b){
+    return a + b;
+  },0);
 }
+
+
+console.log(getNum(300)); // 2
+console.log(getNum(90783)); // 4
+console.log(getNum(123321)); // 0
+console.log(getNum(89282350306)); // 8
+console.log(getNum(3479283469)); // 5
+
+
+
+// var getNum = function(n) {
+//     return n.toString().split("")
+//                     .map(a=>/[069]/
+//                     .test(a) ? 1 : a==="8" ? 2 : 0)
+//                     .reduce((a,b) => a + b);
+// };
