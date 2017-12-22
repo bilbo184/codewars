@@ -16,13 +16,17 @@
 // Example
 // wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
 
+
 function wave(str) {
-    let arr = [];
-    for(let i = 0; i < str.length; i++) {
-        if(/\w/.test(str.charAt(i))){
-            let temp = str.slice(0, i) + str.charAt(i).toUpperCase() + str.slice(i+1);
-            arr.push(temp);
-        }
-    }
-    return arr;
+ var arr= [];
+ for(var i = 0; i < str.length; i++){
+  if(/\w/.test(str.charAt(i))){
+     var temp = str.slice(0, i) + str[i].toUpperCase() + str.slice(i+1);
+     arr.push(temp);
+   }
+ }
+ return arr;
 }
+
+console.log(wave("hello")); // 'Hello', 'hEllo', 'heLlo', 'helLo', 'hellO'
+console.log(wave("g ap")); //  'G ap', 'g Ap', 'g a
