@@ -29,5 +29,19 @@ function multiplicationTable(row, col) {
   return arr;
 }
 
-
 console.log(multiplicationTable(4, 3));
+
+
+// solution 2
+
+// multiplicationTable = function(size) {
+
+//   return Array.apply(null, new Array(size)).map(function(val, i) {
+//     return Array.apply(null, new Array(size)).map(function(val, j) {
+//       return (i+1) * (j+1);
+//     });
+//   });
+// }
+
+// console.log(multiplicationTable(3));
+// console.log(multiplicationTable(4));
