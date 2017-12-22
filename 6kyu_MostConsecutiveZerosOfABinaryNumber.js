@@ -25,19 +25,34 @@
 
 // One way, among many, to visualize the end of each step might look like:
 
-max_consec_zeros("777")
-1: "777"
-2: 777
-3: 1100001001
-4: 4
-5: "Four"
-max_consec_zeros("777") => "Four"
+// max_consec_zeros("777")
+// 1: "777"
+// 2: 777
+// 3: 1100001001
+// 4: 4
+// 5: "Four"
+// max_consec_zeros("777") => "Four"
 
 
-let maxConsecZeros = (function() {
-    let num = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"];
-    return function(n) {
-        let arr = (n >>> 0).toString(2).match(/[0]+/g);
-        return arr ? num[Math.max(...arr.map(a=>a.length))] : num[0];
+function maxConsecZeros(n){
+    var num = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"];
+    var arr = (n>>>0).toString(2).match(/[0]+/g);
+    console.log(arr);
+    if(!arr){
+      return "Zero";
     }
-})();
+    var maxLength = Math.max(...arr.map(function(a){
+      return a.length;
+    }));
+    return num[maxLength];
+}
+
+
+console.log(maxConsecZeros("9")); //  "Two"
+console.log(maxConsecZeros("13")); // "One"
+console.log(maxConsecZeros("15")); // "Zero"
+console.log(maxConsecZeros("42")); // "One"
+console.log(maxConsecZeros("550")); // "Three"
+console.log(maxConsecZeros("992")); // "Five"
+console.log(maxConsecZeros("1024")); // "Ten"
+console.log(maxConsecZeros("1037")); // "Six"
