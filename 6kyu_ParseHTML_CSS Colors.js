@@ -27,10 +27,22 @@
 // parseHTMLColor('#3B7');       // => { r: 51,  g: 187, b: 119 }
 // parseHTMLColor('LimeGreen');  // => { r: 50,  g: 205, b: 50  }
 
-let parseHTMLColor = function(str) {
-    let [r, g, b] = [0, 0, 0];
-    str = PRESET_COLORS.hasOwnProperty(str.toLowerCase()) ? str = PRESET_COLORS[str.toLowerCase()] : str;
-    let arr = /\#[0-9a-fA-F]{6}/g.test(str) ? str.slice(1).match(/.{2}/g) : str.slice(1).match(/.{1}/g).map(a => a + a);
-    [r, g, b] = arr.map(a => parseInt(a, 16))
-    return {r, g, b}
+function parseHTMLColor(color) {
+  var key = color.toLowerCase();
+  var rgb = (PRESET_COLORS[key] || key).slice(1);
+  
+  if (rgb.length === 3)
+    rgb = rgb.replace(/./g, '$&$&');
+    
+  var val = parseInt(rgb, 16);
+  
+  return { 
+    r: val / 65536 | 0,
+    g: (val / 256 | 0) % 256,
+    b: val % 256
+  }
 }
+
+console.log(parseHTMLColor('#80FFA0')); //{ r: 128, g: 255, b: 160 }
+console.log(parseHTMLColor('#3B7')); //{ r: 51,  g: 187, b: 119 }
+console.log(parseHTMLColor('LimeGreen')); //{ r: 50,  g: 205, b: 50  }
