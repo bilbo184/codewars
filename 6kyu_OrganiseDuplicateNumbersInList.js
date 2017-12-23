@@ -16,12 +16,32 @@
 // array, an empty array should be returned.
 
 function group(arr) {
-    let newArr = [];
-    while(arr.length) {
-        let item = arr[0],
-            count = arr.filter(a => a === item).length;
-        arr = arr.filter(a => a !== item);
-        newArr.push(Array(count).fill(item))
-    }
-    return newArr;
+ var newArr = [];
+ while(arr.length){
+ var temp = arr[0];
+ count = arr.filter(function(a){
+   return a === temp;
+ }).length;
+ arr = arr.filter(function(a){
+   return a !== temp;
+ });
+ newArr.push(Array(count).fill(temp));  
+ }
+ return newArr;
+}
+
+
+console.log(group([3, 2, 6, 2, 1, 3])); // [[3, 3], [2, 2], [6], [1]]
+console.log(group([3, 2, 6, 2])); // [[3], [2, 2], [6]]
+
+// solution 2
+
+function group(arr) {
+  var result = [];
+  while(arr.length > 0)
+  {
+    result.push(arr.filter(a => a == arr[0]));
+    arr = arr.filter(a => a != arr[0]);    
+  }
+  return result;
 }
