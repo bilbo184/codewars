@@ -41,12 +41,16 @@ console.log(range(2, 3, 15)); // [ 2, 5, 8, 11, 14 ]
 
 // solution 2 
 
-// function range(min, step, max) {
-//   if (arguments.length === 1) return range(1, 1, min)
-//   if (arguments.length === 2) return range(min, 1, step)
-//   const result = []
-//   for (let i = min; i <= max; i += step) {
-//     result.push(i)
-//   }
-//   return result
-// }
+function range(min, step, max) {
+  if(arguments.length === 1){
+  return range(1, 1, arguments[0]);
+  }
+  if(arguments.length === 2){
+  return range(arguments[0], 1,arguments[1]);
+  }
+  var arr = [];
+  for(var i = min; i <= max; i+=step){
+    arr.push(i);
+  }
+  return arr;
+}
