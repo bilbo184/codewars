@@ -29,17 +29,24 @@
 //   sqInRect(5, 5) should return null
 
 function sqInRect(lng, wdth) {
-    if(lng === wdth) { return null; }
-    let arr = [];
-    while(lng !== wdth) {
-        if(lng > wdth){
-            arr.push(wdth);
-            lng -= wdth;
-        } else {
-            arr.push(lng);
-            wdth -= lng;
-        }
+    if(lng === wdth){
+      return null; 
     }
-    arr.push(arr[arr.length-1])
+    var arr = [];
+    while(lng !== wdth){
+      if(lng > wdth){
+        lng = lng - wdth;
+        arr.push(wdth);
+      }else{
+        wdth = wdth - lng;
+        arr.push(lng);
+      }
+    }
+    arr.push(arr[arr.length-1]);
     return arr;
 }
+
+console.log(sqInRect(5, 3)); // [ 3, 2, 1, 1 ]
+console.log(sqInRect(3, 5)); // [ 3, 2, 1, 1 ]
+console.log(sqInRect(20, 14)); // [ 14, 6, 6, 2, 2, 2 ]
+
