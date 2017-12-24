@@ -11,14 +11,42 @@
 // range(2, 3, 15) --> 2,5,8,11,14
 
 function range() {
-    let args = [].slice.call(arguments)
-    if(args.length <= 2)
-        return args.length === 1 ? 
-          Array.apply(null, Array(args[0])).map((_,i) => i+1) : 
-          Array.apply(null, Array(args[1]-args[0]+1)).map((_,i) => i+args[0]); 
+    let args = [].slice.call(arguments);
+    // console.log([].slice.call(arguments));
+    // console.log(args.length);
+    if(args.length <= 2){
+     return args.length === 1 ?
+     Array.apply(null, Array(args[0])).map(function(_, i){
+       return i+1;
+     })
+     :
+     Array.apply(null, Array(args[1] - args[0]+1)).map(function(_, i){
+       return args[0]+i;
+     })
+ 
+    }
+
     let temp = [];
     for(let i = args[0]; i <= args[2]; i+= args[1]){
-        temp.push(i)
+        temp.push(i);
     }
     return temp;
 }
+
+console.log(range(5)); // [ 1, 2, 3, 4, 5 ]
+console.log(range(3, 7)); // [ 3, 4, 5, 6, 7 ]
+console.log(range(2, 3, 15)); // [ 2, 5, 8, 11, 14 ]
+
+
+
+// solution 2 
+
+// function range(min, step, max) {
+//   if (arguments.length === 1) return range(1, 1, min)
+//   if (arguments.length === 2) return range(min, 1, step)
+//   const result = []
+//   for (let i = min; i <= max; i += step) {
+//     result.push(i)
+//   }
+//   return result
+// }
