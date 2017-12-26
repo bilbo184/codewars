@@ -47,3 +47,22 @@ var rAvgSol = runningAverage();
   console.log(rAvgSol(12)); // 11
   console.log(rAvgSol(22)); 
   console.log(rAvgSol(28)); 
+
+
+// solution 2
+
+function runningAverage() {
+  var accumulator = 0;
+  var size = 0;
+
+  return function(number) {
+    accumulator += number;
+    size += 1;
+    
+    return Math.round(accumulator / size * 100) / 100;
+  };
+}
+
+
+
+
