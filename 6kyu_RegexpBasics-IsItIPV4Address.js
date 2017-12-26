@@ -14,3 +14,22 @@ String.prototype.ipv4Address=function(){
   }
   return true;
 }
+
+// solution 2
+
+String.prototype.ipv4Address=function(){
+     return /^(((\d)|(\d\d)|(1\d\d)|(2[0-4]\d)|(25[0-5]))\.){4}$/.test(this+".");
+};
+
+
+console.log("".ipv4Address()); //  false
+console.log("127.9.0.1".ipv4Address()); // true
+console.log("0.0.0.0".ipv4Address()); // true
+console.log("255.255.255.255".ipv4Address()); // true
+console.log("10.20.30.40".ipv4Address()); // true
+console.log("10.256.30.40".ipv4Address()); // false
+console.log("10.20.030.40".ipv4Address()); // false
+console.log("127.0.1".ipv4Address()); // false
+console.log("127.0.0.0.1".ipv4Address()); // false
+console.log("..255.255".ipv4Address()); // false
+
