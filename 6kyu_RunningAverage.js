@@ -25,9 +25,25 @@
 
 function runningAverage() {
     let arr = [];
+    
     return function(n) {
         arr.push(n);
+        console.log(arr);
         let avg = (arr.reduce((a,b) => a + b)/arr.length);
+        console.log((avg%1)+"!!");
+        console.log(String(avg % 1).length > 3);
         return (String(avg % 1).length > 3) ? Math.round(avg*100)/100 : avg;
+       
     }
 }
+
+  // console.log(runningAverage(10)); // 10
+  // console.log(runningAverage(11)); // 10.5   
+  // console.log(runningAverage(12)); // 11
+  
+var rAvgSol = runningAverage();
+  console.log(rAvgSol(10)); // 10
+  console.log(rAvgSol(11)); // 10.5   
+  console.log(rAvgSol(12)); // 11
+  console.log(rAvgSol(22)); 
+  console.log(rAvgSol(28)); 
