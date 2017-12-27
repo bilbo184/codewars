@@ -29,16 +29,17 @@
 // thirt(1234567) calculates 178, then 87, then 87 and returns 87.
 // thirt(321) calculates 48, 48 and returns 48
 
-function loopSum(arr) {
-    let ptrn = [1, 10, 9, 12, 3, 4];
-    return arr.reduce((a,b,idx) => +(a) + (b*ptrn[idx%ptrn.length]));
+  const nums = [1,10,9,12,3,4];
+  var sum =  n.toString().split('').reverse().reduce(function(a, b, i){
+    return a + (b*nums[i%nums.length]);
+  }, 0);
+  return sum.toString().length > 2 ? thirt(sum) : sum;
 }
 
-function thirt(num) {
-    let arr = String(num).split("").reverse(), next, ans = 0;
-    while(next != ans) {
-        ans = loopSum(arr);
-        arr = String(ans).split("").reverse();
-        next = loopSum(arr);
-    }
-    return +arr.reverse().join("");
+
+
+console.log(thirt(8529)); // 79
+console.log(thirt(85299258)); // 31
+console.log(thirt(5634)); // 57
+console.log(thirt(1111111111)); // 71
+console.log(thirt(987654321)); // 30
