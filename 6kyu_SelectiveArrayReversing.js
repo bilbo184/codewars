@@ -22,12 +22,18 @@
 // Note : if the length argument exceeds the array length, reverse all of them, if the 
 // length argument is zero do not reverse at all.
 
+
+
 function selReverse(arr, len) {
     let temp = [];
     if(len > arr.length) { return arr.reverse(); }
     if(!len) { return arr; }
-    while(arr.length) {
-        temp = temp.concat(arr.splice(0, len).reverse())
+    while(arr.length){
+      temp = temp.concat(arr.splice(0, len).reverse());
     }
     return temp;
 }
+
+console.log(selReverse([2,4,6,8,10,12,14,16], 3)); // [ 6, 4, 2, 12, 10, 8, 16, 14 ]
+console.log(selReverse([1,2,3,4,5,6], 2)); // [ 2, 1, 4, 3, 6, 5 ]
+
