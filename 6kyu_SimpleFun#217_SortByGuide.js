@@ -57,3 +57,17 @@ console.log(sortByGuide([2, 5, 3, 1, 4, 70, 8],[2, 5, 1, 3, -1, 4, -1])); //
 console.log(sortByGuide([700, 800, 400, 100, 900, 325],[2, -1, 1, -1, 3, -1])); // 
 console.log(sortByGuide([70, 10, 15, 800, 400, 4, 225, 438, 509, 1000],[6, 1, 4, -1, -1, 2, -1, -1, 5, 3])); // 
 console.log(sortByGuide([27, 67, 80, 38, 21], [2, 5, 3, 1, 4])); // 
+
+// solution 2
+
+function sortByGuide(arr, guide) {
+  
+  let sort = arr
+    .map((a, i) => ({ value: a, weight: guide[i] }))
+    .filter(a => a.weight !== -1)
+    .sort((a, b) => b.weight - a.weight)
+    .map(a => a.value);
+  
+  return arr.map((a, i) => guide[i] === -1 ? a : sort.pop());
+  
+}
