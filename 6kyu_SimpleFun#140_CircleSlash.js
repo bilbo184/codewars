@@ -32,4 +32,19 @@
 
 // The index of the last person standing.
 
-const circleSlash = n => (n - (1 << 31 - Math.clz32(n))) * 2 + 1;
+function circleSlash(n) {
+  var nStart = Math.pow(2, Math.floor(Math.log2(n)) );
+  return 1 + (n - nStart) * 2;
+}
+
+
+console.log(circleSlash(5)); // 3
+console.log(circleSlash(11)); // 7
+console.log(circleSlash(1)); // 1
+console.log(circleSlash(2)); // 1
+console.log(circleSlash(3)); // 3
+console.log(circleSlash(4)); // 1
+console.log(circleSlash(8)); // 1
+console.log(circleSlash(16)); // 1
+console.log(circleSlash(15)); // 15
+console.log(circleSlash(31)); // 31
