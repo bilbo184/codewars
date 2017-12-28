@@ -18,7 +18,13 @@
 // [output] a string
 
 function replaceDashesAsOne(str) {
-  while(/\-(\s)+\-/g.test(str))
-      str = str.replace(/\-(\s)+\-/g, "-");
-  return str.replace(/[\-]+/g, "-");
+  return str.replace(/-[- ]*-/g, "-");
 }
+
+// function replaceDashesAsOne(str) {
+//   return str.replace(/(-\s*)+-/g, '-');
+// }
+
+console.log(replaceDashesAsOne("we-are- - - code----warriors.-")); // we-are- code-warriors.-
+console.log(replaceDashesAsOne("a---b- - -c")); // a-b-c
+console.log(replaceDashesAsOne("a------")); // a-
