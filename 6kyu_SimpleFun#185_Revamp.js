@@ -31,9 +31,18 @@
 // A string of lowercase words. Each word is separated by exactly one space character.
 // [output] a string
 
-let revamp = function(str) {
-    str = str.split(" ").map(a => a.split("").sort().join(""));
-    return str.sort((a,b)=>val(a)-val(b)||a.length-b.length||a.localeCompare(b)).join(" ");
+function revamp(str){
+  return str.split(' ')
+            .map(word => word.split(''))
+            .map(chars => [chars.sort().join(''), chars.reduce((a, b) => a + b.charCodeAt(0), 0)])
+            .sort((a, b) => a[1] - b[1] || a.length - b.length || a[0].localeCompare(b[0]))
+            .map(a => a[0])
+            .join(' ');
+ 
 }
-
-const val = s => s.split("").map(a=>a.charCodeAt(0)).reduce((a,b)=>a+b);
+console.log(revamp("batman is bruce wayne")); // is bceru aenwy aabmnt
+console.log(revamp("peter parker is spiderman")); // is eeprt aekprr adeimnprs
+console.log(revamp("codewars is great")); // is aegrt acdeorsw
+console.log(revamp("airplanes in the night sky")); // in eht ksy ghint aaeilnprs
+console.log(revamp("fcybnuim dqk kyia mima anj lkugghxk aug")); // ajn agu dkq aimm aiky bcfimnuy gghkklux
+console.log(revamp("mhgkn te ocllswua eop ldbvwqvu qdudyyjt gin qqci")); // et gin eop ciqq ghkmn acllosuw bdlquvvw ddjqtuyy
