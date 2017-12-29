@@ -48,13 +48,24 @@
 // |     6        | 6  8  10 12 20 |       10       |
 // +--------------+----------------+----------------+
 
-function liquidMixing(arr) {
-    let added = [arr[0]], temp = [arr[0]];
-    
-    for(let i = 1; i < arr.length; i++) {
-        added.push(arr[i]);
-        added = added.sort((a,b) => a - b);
-        let mid = (added.length % 2 === 0) ? added.length/2 : ~~(added.length/2);
-        (added.length % 2 === 0) ? temp.push((added[mid]+added[mid-1])/2) : temp.push(added[mid])
-    }
-    return temp;
+function liquidMixing(densities) {
+  var barrel = [];
+  var output = [];
+  for(var i in densities){
+  barrel.push(densities[i]);
+  barrel.sort((a, b) => a - b);
+  var middle = Math.floor(barrel.length/2);
+  if(barrel.length%2 === 0){
+    output.push((barrel[middle]+barrel[middle-1])/2);
+  }else{
+    output.push(barrel[middle]);
+  }
+  }
+  return output;
+}
+
+
+console.log(liquidMixing([10, 20, 8, 12, 6]));// [10, 15, 10, 11, 10]); //
+console.log(liquidMixing([1, 2, 3, 4, 5, 6, 7, 8])); //[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]); //
+console.log(liquidMixing([10, 1, 8, 2, 9, 5, 3, 4])); //[10, 5.5, 8, 5, 8, 6.5, 5, 4.5]); //
+
