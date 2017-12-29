@@ -23,14 +23,24 @@
 // The maximum distance is formed by the character 'a' from index 5 to index 27 
 // (0-based). Therefore, the answer is "a23".
 
-function distSameLetter(s) {
-    let uniques = s.split('').filter((a,i,arr) => arr.indexOf(a) === i).join(""),
-        arr = ['', 0];
-    for(let i = 0; i < uniques.length; i++) {
-        let diff = s.lastIndexOf(uniques[i]) - s.indexOf(uniques[i]) + 1;
-        if(diff > arr[1]) {
-            arr = [uniques[i],diff]
-        }
-    }
-    return arr[0]+arr[1];
+
+function distSameLetter(s){
+   var uniques = s.split('').filter((a, i) => s.indexOf(a) === i).join('');
+   console.log(uniques);
+   var arr = ['', 0];
+   for(var i = 0; i < uniques.length; i++){
+     diff = s.lastIndexOf(uniques[i]) - s.indexOf(uniques[i]) + 1;
+     if(diff > arr[1]){
+       arr = [uniques[i], diff];
+     }
+   }
+   return arr;
 }
+
+console.log(distSameLetter("fffffahhhhhhaaahhhhbhhahhhhabxx")); // a23
+console.log(distSameLetter("ucabcabcabcdfxhuizfgrsuixacbcx")); // c28
+console.log(distSameLetter("iaufzhaifxhuzofghabcbacdbuzoxih")); // i30
+console.log(distSameLetter("axaxfaaiiiofizxuiox")); // x18
+console.log(distSameLetter("fxfaufhacaaacaaabbbabaddb")); // a19 
+
+
