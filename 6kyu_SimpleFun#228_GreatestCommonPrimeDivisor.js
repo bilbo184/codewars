@@ -25,23 +25,32 @@
 // For a = 12 and b = 18, the output should be 3
 // For a = 12 and b = 13, the output should be -1
 
-function isPrime(n) {
-    if(n === 2) { return true; }
-    if(n % 2 === 0 || n < 2) { return false; }
-    for(let i = 3; i <= Math.sqrt(n); i+=2){
-        if(n % i === 0){ return false;}
+
+function isPrime(num){
+    if(num === 2){
+        return true;
+    }else if(num % 2 === 0){
+        return false;
+    }else{
+        for(var i = 2; i < num; i++){
+            if (num % i === 0){
+                return false;
+            }
+        }
+        return true;
     }
-    return true;
+}
+function greatestCommonPrimeDivisor(a, b) {
+  for(var i = Math.min(a, b); i > 1; i--){
+    if(isPrime(i) && a % i === 0 && b % i === 0){
+      return i;
+    }
+  }
+  return -1;
 }
 
-let gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+console.log(greatestCommonPrimeDivisor(12,18)); // 3
+console.log(greatestCommonPrimeDivisor(12,13)); // -1
+console.log(greatestCommonPrimeDivisor(2,3)); // -1
+console.log(greatestCommonPrimeDivisor(100,140)); // 5
 
-let greatestCommonPrimeDivisor = function(a,b) {
-    let min = gcd(a, b);
-    while(min) {
-        if(isPrime(min) && a % (min) === 0 && b % (min) === 0)
-            return min;
-        min--
-    }
-    return -1
-}
