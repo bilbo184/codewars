@@ -26,7 +26,6 @@
 
 function distSameLetter(s){
    var uniques = s.split('').filter((a, i) => s.indexOf(a) === i).join('');
-   console.log(uniques);
    var arr = ['', 0];
    for(var i = 0; i < uniques.length; i++){
      diff = s.lastIndexOf(uniques[i]) - s.indexOf(uniques[i]) + 1;
@@ -34,7 +33,7 @@ function distSameLetter(s){
        arr = [uniques[i], diff];
      }
    }
-   return arr;
+   return arr.join('');
 }
 
 console.log(distSameLetter("fffffahhhhhhaaahhhhbhhahhhhabxx")); // a23
@@ -43,4 +42,18 @@ console.log(distSameLetter("iaufzhaifxhuzofghabcbacdbuzoxih")); // i30
 console.log(distSameLetter("axaxfaaiiiofizxuiox")); // x18
 console.log(distSameLetter("fxfaufhacaaacaaabbbabaddb")); // a19 
 
+// solution 2
 
+function distSameLetter(s) {
+var result = "";
+  for(var i = 0; i < s.length; i++){
+    for(var j = 0; j < s.length; j++){
+      if(s[i] == s[j]){ 
+        if(result.substring(1) < j-i+1){
+          result = s[i] + (j-i+1);
+        }
+      }  
+    }
+  }  
+return result;
+}
