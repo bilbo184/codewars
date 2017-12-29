@@ -34,11 +34,17 @@
 // [output] an integer
 
 
-let squareDigitsSequence = function(a0) {
-    let arr = [], currNum = a0;
-    while(arr.indexOf(currNum) < 0) {
-        arr.push(currNum);
-        currNum = String(currNum).split("").map(a=>Math.pow(a, 2)).reduce((a,b)=> a+b)
-    }
-    return arr.length + 1;
+function squareDigitsSequence(a0){
+  var arr = [];
+  var currNum = a0;
+  while(arr.indexOf(currNum) < 0){
+    arr.push(currNum);
+    currNum = String(currNum).split('').map(a => Math.pow(a, 2)).reduce((a, b) => a+b, 0)
+  }
+  return arr.length+1;
 }
+
+console.log(squareDigitsSequence(16)); // 9
+console.log(squareDigitsSequence(103)); // 4
+console.log(squareDigitsSequence(1)); // 2
+
