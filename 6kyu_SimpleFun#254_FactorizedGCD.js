@@ -40,3 +40,7 @@ function factorizedGCD(arr1, arr2){
     }
     return !sim.length ? 1 : sim.reduce((a,b)=> a * b);
 }
+
+console.log(factorizedGCD([2, 3, 3, 3, 5],[2, 2, 2, 2, 3, 3])); // 18
+console.log(factorizedGCD([7],[2, 3, 3, 3, 7])); // 7
+console.log(factorizedGCD([3, 5, 11],[13, 17])); // 1
