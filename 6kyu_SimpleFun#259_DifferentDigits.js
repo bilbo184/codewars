@@ -27,10 +27,12 @@
 
 function uniqueDigit(num) {
     num = String(num);
-    for(let i = num.length-1; i >= 0; i--){
-        if(num.indexOf(num[i]) !== i) {
-            return false;
-        }
+    for(var i = 0; i < num.length; i++){
+     for(var j = i+1; j < num.length; j++){
+       if(num.indexOf(num[i]) === num.indexOf(num[j])){
+         return false;
+       }
+     }
     }
     return true;
 }
@@ -46,3 +48,8 @@ function differentDigitsNumberSearch(arr) {
     }
     return curr;
 }
+
+console.log(differentDigitsNumberSearch([22, 111, 101, 124, 33, 30])); // 124
+console.log(differentDigitsNumberSearch([1111, 404])); // -1
+console.log(differentDigitsNumberSearch([10, 11, 12, 13, 145])); // 10
+
