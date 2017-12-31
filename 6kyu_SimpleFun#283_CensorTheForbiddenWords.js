@@ -34,9 +34,17 @@
 // the output should be "The *** does not like the ****".
 
 function censorThis(text, forbiddenWords) {
-  for(let i = 0; i < forbiddenWords.length; i++) {
-    let re = new RegExp("\\b("+forbiddenWords[i]+")\\b", "gi");
-    text = text.replace(re , a => "*".repeat(a.length));
-  }
-  return text;
+  var words = text.split(' ');
+  var censoredWords = words.map(function(word) {
+    return forbiddenWords.indexOf(word.toLowerCase()) === -1 ? word : '*'.repeat(word.length);
+  });
+  return censoredWords.join(' ');
 }
+
+
+console.log(censorThis("The cat does not like the fire",["cat","fire"])); // 
+console.log(censorThis("The cat does not like the therapy",["the","like"])); // 
+console.log(censorThis("Javascript is the BEST programming language and LOLCODE is the Worst",["worst","best"])); // 
+console.log(censorThis("A bald eagle is a worthy adversary",["bald","a"])); // 
+console.log(censorThis("The MAGIC words are fiz buzz and plaf",[])); // 
+console.log(censorThis("The MAGIC words are fiz buzz and plaf",["fluzz","z","ping","narf","tedd","troz","zort"])); // 
