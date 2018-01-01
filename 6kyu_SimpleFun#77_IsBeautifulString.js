@@ -38,16 +38,33 @@
 // [output] a boolean value
 
 
-let isBeautifulString = function(s) {
-    let alphabet = "abcdefghijklmnopqrstuvwxyz".split("")
-    let max = (s.match(/a/gi) || []).length;
-    for(let i = 1; i < alphabet.length; i++) {
-        let temp = (s.match(new RegExp(alphabet[i], "gi")) || []).length;
-        if(max >= temp) { 
-            max = temp; 
-        } else {
-            return false;
-        }
+function isBeautifulString(s) {
+  var d = [];
+  for(var i = 0; i < 26; i++){
+    d[i] = 0;
+  }
+  for(var j = 0; j < s.length; j++){
+    d[s.charCodeAt(j)-97]++;
+  }
+  for(var k = 0; k < 26; k++){
+    if(d[k] < d[k+1]){
+      return false;
     }
-    return true;
+  }
+  return true;
 }
+
+// function isBeautifulString(s) {
+//   const d = []
+//   for (let i = 0; i < 26; ++i) d[i] = 0
+//   for (let i = 0; i < s.length; ++i) ++d[s.charCodeAt(i) - 97]
+//   for (let i = 0; i < 25; ++i) if (d[i] < d[i + 1]) return false
+//   return true
+// }
+
+console.log(isBeautifulString("bbbaacdafe")); // true
+console.log(isBeautifulString("aabbb")); // false
+console.log(isBeautifulString("bbc")); // false
+console.log(isBeautifulString("bbbaa")); // false
+console.log(isBeautifulString("bbbaaa")); // true
+
