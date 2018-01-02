@@ -24,14 +24,15 @@ function isPalindrome(str){
 function buildPalindrome(str) {
   var temp = str;
   for(var i = 0; i < str.length; i++){
+    console.log(str.slice(0,i));
     temp = str + str.slice(0, i).split('').reverse().join('');
     if(isPalindrome(temp)){
-     return temp;
+    return temp;
     }
   }
-
 }
-
+console.log(buildPalindrome("baaaacab")); // baaaacabacaaaab
+console.log(buildPalindrome("ebgfgfbde")); // ebgfgfbdedbfgfgbe
+console.log(buildPalindrome("bca")); // bcacb
 console.log(buildPalindrome("abcdc")); // abcdcba
 console.log(buildPalindrome("ababab")); // abababa
-
