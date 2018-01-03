@@ -12,6 +12,20 @@
 // solution('abcdef') // should return ['ab', 'cd', 'ef']
 
 function solution(str){
-   str = (str.length % 2 === 0) ? str : str + "_";
-   return str.match(/.{1,2}/g);
+ str = (str.length%2 === 0) ? str : str+"_";
+ var arr = [];
+ for(var i = 0; i < str.length; i=i+2){
+   arr.push(str[i]+str[i+1]);
+ }
+ return arr;
+}
+
+
+console.log(solution('abc')); // ['ab', 'c_']
+console.log(solution('abcdef')); // ['ab', 'cd', 'ef']
+
+// solution 2
+
+function solution(str) {
+  return (str.length % 2 ? str + '_' : str).match(/../g);
 }
