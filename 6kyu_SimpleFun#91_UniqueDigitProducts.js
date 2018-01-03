@@ -34,7 +34,19 @@
 
 // The number of different digit products in a.
 
-let uniqueDigitProducts = function(arr) {
-    arr = arr.map(a => (a < 10) ? a : String(a).split("").reduce((a,b)=> a * b))
-    return arr.filter((a, idx) => arr.indexOf(a) === idx).length;
+function uniqueDigitProducts(arr) {
+ arr = arr.map(function(val){
+   return val < 10 ? val : val.toString().split('').reduce(function(a,b){
+     return a*b;
+   }, 1);
+ });
+ return arr.filter(function(val, i){
+   return arr.indexOf(val) === i;
+ }).length;
 }
+
+console.log(uniqueDigitProducts([2, 8, 121, 42, 222, 23])); // 3 
+console.log(uniqueDigitProducts([239])); // 1
+console.log(uniqueDigitProducts([100, 101, 111])); // 2
+console.log(uniqueDigitProducts([100, 23, 42, 239, 22339, 9999999, 456, 78, 228, 1488])); // 10
+console.log(uniqueDigitProducts([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])); // 10
