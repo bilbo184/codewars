@@ -56,18 +56,29 @@ function oneSplit(num) {
     return Array(num).fill(1);
 }
 
-let splitAllEvenNumbers = function(numbers, way) {
-    let fn = (way === 0) ? closeSplit : 
-             (way === 1) ? farSplit : 
-             (way === 2) ? evenSplit : 
-                           oneSplit,
-        temp = [];
-    numbers = numbers.map(a => a % 2 === 0 ? fn(a) : a);
-    for(let i = 0; i < numbers.length; i++) {
-        if(Array.isArray(numbers[i]))
-            temp = temp.concat(numbers[i]);
-        else
-            temp.push(numbers[i]);
+
+function splitAllEvenNumbers(numbers, way){
+  var  fn = (way === 0) ? closeSplit : (way === 1) ? farSplit : (way === 2) ? evenSplit : oneSplit;
+  var  temp = [];
+  numbers = numbers.map(function(a){
+    return a % 2 === 0 ? fn(a) : a; 
+  });  
+  for(var i in numbers){
+    if(Array.isArray(numbers[i])){
+      temp = temp.concat(numbers[i]);
+    }else{
+      temp.push(numbers[i]);
     }
-    return temp;
+  }
+  return temp;
 }
+
+console.log(splitAllEvenNumbers([ 1, 10, 1, 3 ], 0)); // [ 1, 5, 5, 1, 3 ]
+console.log(splitAllEvenNumbers([ 1, 10, 1, 3 ], 1)); // [ 1, 1, 9, 1, 3 ]
+console.log(splitAllEvenNumbers([ 1, 10, 1, 3 ], 2)); // [ 1, 5, 5, 1, 3 ]
+console.log(splitAllEvenNumbers([ 1, 10, 1, 3 ], 3)); // [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3 ]
+console.log(splitAllEvenNumbers([ 1, 1, 3, 8 ], 0)); //  [ 1, 1, 3, 3, 5 ]
+console.log(splitAllEvenNumbers([ 1, 1, 3, 8 ], 1)); //  [ 1, 1, 3, 1, 7 ]
+console.log(splitAllEvenNumbers([ 1, 1, 3, 8 ], 2)); // [ 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1 ]
+console.log(splitAllEvenNumbers([ 1, 1, 3, 8 ], 3)); //  [ 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1 ]
+
