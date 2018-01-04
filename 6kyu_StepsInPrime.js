@@ -46,18 +46,27 @@
 // A "gap" is more restrictive: there must be no primes in between (101-107 is a "step" but 
 // not a "gap". Next kata will be about "gaps":-).
 
-let isPrime = function(n){
-    if(n % 2 === 0 || n < 2) { return false; }
-    if(n===2) { return true;}
-    for(let i = 3; i <= Math.sqrt(n); i+=2){
-        if(n % i === 0) { return false; }
+function isPrime(n) {
+  for(var i = 2; i <= Math.sqrt(n); i++){
+    if(n%i === 0){
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
-let step = function(g, m, n){
-    for(let i = m, idx = 0; i <= n; i++){
-        if(isPrime(i) && isPrime(i+g)){ return [i, i+g]}
-    }
-    return null;
-}w
+
+function step(g, m, n) {
+        for(var i = m; i <= n-g+1; i++) {
+            if (isPrime(i) && isPrime(i + g)) 
+                return [i, i + g];
+        }
+        return null;
+}
+
+console.log(step(2,100,110)); // [ 101, 103 ]
+console.log(step(4,100,110)); // [ 103, 107 ]
+console.log(step(6,100,110)); // [ 101, 107 ]
+console.log(step(8,300,400)); // [ 359, 367 ]
+console.log(step(10,300,400)); // [ 307, 317 ]
+
