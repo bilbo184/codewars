@@ -30,8 +30,15 @@
 // => 1 + 1
 // => 2
 
-let digital_root = function(num){
-  while(num > 9)
-    num = String(num).split("").reduce((a,b) => +a + (+b));
-  return num;
+
+function digital_root(n){
+  while(n > 9){
+    n = n.toString().split('').reduce((a, b) => Number(a)+Number(b), 0);
+  }
+  return n;
 }
+
+console.log(digital_root(16)); // 7
+console.log(digital_root(942)); // 6
+console.log(digital_root(132189)); // 6 
+console.log(digital_root(493193)); // 2
