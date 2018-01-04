@@ -22,6 +22,7 @@
 // I have also created other katas. Take a look if you enjoyed this kata!
 
 
+
 function sortTheInnerContent(words){
    words = words.split(" ").map(a => 
            a.length === 1 ? a :
@@ -35,4 +36,3 @@ function sortTheInnerContent(words){
 console.log(sortTheInnerContent("sort the inner content in descending order")); // srot the inner ctonnet in dsnnieedcg oredr
 console.log(sortTheInnerContent("wait for me")); // wiat for me
 console.log(sortTheInnerContent("this kata is easy")); // tihs ktaa is esay
-
