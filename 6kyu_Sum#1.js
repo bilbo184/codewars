@@ -11,12 +11,19 @@
 // sum();          // => 0
 // NOTE: Pay attention that last brackets are left empty to indicate end of operations
 
-function sum(n) {
-    let a = (n) ? n : 0, 
-        f = function sum(b) {
-        if(isNaN(b)) return a;
-        a += b;
-        return sum;
-    }
-    return (n) ? f : 0;
+function sum(n){
+  if(n === undefined){
+    return 0;
+  }
+  return function(next){
+   if(next === undefined){
+     return n;
+   }
+     return sum(n+next);
+  }
 }
+
+console.log(sum(4)(5)(9)()); // 18
+console.log(sum(7)(5)()); // 12
+console.log(sum(5)()); // 5
+console.log(sum()); // 0
