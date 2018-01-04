@@ -20,16 +20,23 @@
 // Note : Each string will have at least one character - no need to check for empty 
 // strings :)
 
-let stringSuffix = function(str) {
-    let similar = str.length, suffix = str;
-    while(suffix.length) {
-        suffix = suffix.slice(1);
-        for(let i = 0; i < suffix.length; i++) {
-            if(suffix[i] === str[i]) 
-                similar++;
-            else
-                break;
-        }
-    } 
-    return similar;
+
+function stringSuffix(str){
+  var similar = str.length;
+  var suffix = str;
+  var count = 0;
+  while(suffix.length){
+    suffix = suffix.slice(1);
+    for(var i = 0; i < suffix.length; i++){
+      if(suffix[i] === str[i]){
+        count++;
+      }else{
+        break;
+      }
+    }
+  }
+  return count+similar;
 }
+
+console.log(stringSuffix('ababaa')); // 11
+console.log(stringSuffix('abc')); // 3
