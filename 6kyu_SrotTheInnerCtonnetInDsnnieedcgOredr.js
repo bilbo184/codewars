@@ -21,11 +21,18 @@
 
 // I have also created other katas. Take a look if you enjoyed this kata!
 
-let sortTheInnerContent = function(words) {
-    words = words.split(" ").map(a => 
-                a.length === 1 ? a : 
-                a.charAt(0) + 
-                a.slice(1, a.length-1).split("").sort().reverse().join("") + 
-                a.charAt(a.length-1));
-    return words.join(" ");
+
+function sortTheInnerContent(words){
+   words = words.split(" ").map(a => 
+           a.length === 1 ? a :
+           a.charAt(0) +
+           a.slice(1, a.length-1).split('').sort().reverse().join('') + 
+           a.charAt(a.length-1)
+   );
+   return words.join(' ');
 }
+
+console.log(sortTheInnerContent("sort the inner content in descending order")); // srot the inner ctonnet in dsnnieedcg oredr
+console.log(sortTheInnerContent("wait for me")); // wiat for me
+console.log(sortTheInnerContent("this kata is easy")); // tihs ktaa is esay
+
