@@ -20,6 +20,16 @@
 // days.
 
 function validatePersonalNumber (personalNumber) {
-  var regex = new RegExp(/^(19[0-9]{2}|200[0-9]|201[0-6])(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[0-1])[+-]?([0-9]{4})$/)
+  var regex = new RegExp(/^(200\d|201[123456]|19\d\d)\d{4}[+-]?\d{4}$/)
   return regex.test(personalNumber);
 }
+
+console.log(validatePersonalNumber("201712204444")); // false
+console.log(validatePersonalNumber("1917122-4414")); // false
+console.log(validatePersonalNumber("190010130044")); // true
+console.log(validatePersonalNumber("19500220-4941")); // true
+console.log(validatePersonalNumber("201712204444")); // false
+console.log(validatePersonalNumber("181712204434")); // false
+console.log(validatePersonalNumber("19171220+-1444")); // false
+console.log(validatePersonalNumber("19170220+1406")); // true
+console.log(validatePersonalNumber("201612104542")); // true
