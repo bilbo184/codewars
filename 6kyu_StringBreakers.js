@@ -19,6 +19,16 @@
 
 // Return value as a string: 'Thisi'+'\n'+'sanex'+'\n'+'ample'+'\n'+'strin'+'\n'+'g'
 
-function stringBreakers(n, string){
-  return string.replace(/\s+/g,"").match(new RegExp(".{1," + n + "}", "g")).join("\n");
+function stringBreakers(n, str){
+  str = str.replace(/\s+/g, "");
+  var arr = [];
+  for(var i = 0; i < str.length; i+=n){
+    arr.push(str.substr(i, n));
+  }
+  return arr.join("\n");
 }
+
+// return string.replace(/\s+/g,"").match(new RegExp(".{1," + n + "}", "g")).join("\n");
+
+console.log(stringBreakers(5, 'This is an example string'));
+
