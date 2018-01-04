@@ -14,6 +14,14 @@
 // spinWords( "This is a test") => returns "This is a test" 
 // spinWords( "This is another test" )=> returns "This is rehtona test"
 
-let spinWords = function(str) {
-  return str.split(" ").map(a => (a.length >= 5) ? a.split("").reverse().join(""):a).join(" ");
+
+function spinWords(str){
+  return str.split(' ').map(function(a){
+    return a.length >= 5 ? a.split('').reverse().join('') : a;
+  }).join(' ');
 }
+
+console.log(spinWords("Hey fellow warriors")); // Hey wollef sroirraw
+console.log(spinWords("This is a test")); // This is a test
+console.log(spinWords("This is another test")); // This is rehtona test
+
