@@ -19,12 +19,11 @@
 // In dynamic languages, return either a single value or an array/list. In Haskell, 
 // use Either.
 
-let sqrtApproximation = function(n){
-    if(n <= 0) { return 0; }
-    for(let i = 1; i < n; i++){
-        if(i * i === n)
-            return i;
-        if(i * i > n)
-            return [i - 1, i];
+function sqrtApproximation(n) {
+    for (var i = 0; i * i <= n; i++) {
+        if (i * i === n) return i;
     }
+    return [i - 1, i];
 }
+console.log(sqrtApproximation(4)); // 2
+console.log(sqrtApproximation(5)); // [2, 3]
