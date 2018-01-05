@@ -19,13 +19,22 @@
 // this problem, you'll surely love the dropWhile function.
 
 function takeWhile (arr, pred) {
-  let res = [];
-  for(let i = 0; i < arr.length; i++) {
+  var res = [];
+  for(var i in arr){
     if(pred(arr[i])){
-      res.push(arr[i])
-    } else {
+      res.push(arr[i]);
+    }else{
       return res;
     }
   }
   return res;
 }
+
+  function isEven(num) {
+    return num % 2 === 0;
+  }
+  
+console.log(takeWhile([2,6,4,10,1,5,4,3], isEven)); //  [2,6,4,10]
+console.log(takeWhile([998,996,12,-1000,200,0,1,1,1], isEven)); //  [998,996,12,-1000,200,0]
+console.log(takeWhile([2,4,10,100,64,78,92], isEven)); //  [2,4,10,100,64,78,92]
+
