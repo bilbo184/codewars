@@ -10,11 +10,18 @@
 // uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
 // uniqueInOrder([1,2,2,3,3])       == [1,2,3]
 
-let uniqueInOrder = function(iterable) {
-  if(typeof iterable === 'string') { iterable = iterable.split('') }
-  let arr = [], temp = iterable[0];
-  for(let i = 0; i < iterable.length; i+=1) {
-      (iterable[i+1] === temp && iterable[i+1] !== ' ') ? iterable[i+1] = ' ' : temp = iterable[i+1];
+function uniqueInOrder(iterable){
+  var arr = [];
+  for(var i = 0; i < iterable.length; i++){
+    if(iterable[i] !== iterable[i+1]){
+      arr.push(iterable[i]);
+    }
   }
-  return iterable.filter( a => a != ' ');
+  return arr;
 }
+
+
+console.log(uniqueInOrder('AAAABBBCCDAABBB')); // ['A', 'B', 'C', 'D', 'A', 'B']
+console.log(uniqueInOrder('ABBCcAD')); // ['A', 'B', 'C', 'c', 'A', 'D']
+console.log(uniqueInOrder([1,2,2,3,3])); // [1,2,3]
+
