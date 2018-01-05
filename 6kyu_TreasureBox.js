@@ -5,12 +5,19 @@
 // should return 0 if no other solution is found!
 
 function findNum(x){
-  const num = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
-  x = x.toLowerCase().replace(/[^a-z]/gi, '');
-  for(let i = 0; i <= 10; i++) {
-    if (x.indexOf(num[i]) !== -1) {
+  var num = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+  x = x.toLowerCase().replace(/[^a-z]/g, "");
+  for(var i = 0; i <= 9; i++){
+    if(x.indexOf(num[i]) !== -1){
       return i+1;
     }
   }
-  return 0;
+  return false;
 }
+
+
+console.log(findNum("The robins love hiding amongst the smooth reeds.")); // 3
+console.log(findNum("It's always worth looking after your friends, even if they've upset you.")); // 7 
+console.log(findNum("The orchestra sounded magnificent with the many virtuosi xylophonists.")); // 6
+console.log(findNum("To avoid the calf, I veered sharply to the left.")); // 5
+
