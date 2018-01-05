@@ -20,9 +20,35 @@
 // tripledouble(666789, 12345667) == 1
 // If this isn't the case, return 0
 
-let tripledouble = function(num1, num2){
-    let match = String(num1).match(/(\d)\1{2}/g);
-    for(let i in match)
-        if(String(num2).indexOf(match[i].substr(1)) > -1) { return 1; }
-    return 0;
+
+function tripledouble(num1, num2){
+  var match = String(num1).match(/(\d)\1{2}/g);
+  for(var i in match){
+    if(String(num2).indexOf(match[i].substr(1)) > -1){
+      return 1;
+    }
+  }
+  return 0;
+}
+
+console.log(tripledouble(451999277,41177722899)); // 1
+console.log(tripledouble(1222345, 12345)); // 0
+console.log(tripledouble(12345, 12345)); // 0
+console.log(tripledouble(666789, 12345667)); // 1 
+console.log(tripledouble(10560002, 100)); // 1
+
+
+
+// solution 2
+
+
+function tripledouble(num1, num2){
+  for(var i = 0; i < 10; i++){
+    triple = new RegExp (i + "{3}")
+    double = new RegExp (i + "{2}")
+    if(triple.test(num1) && double.test(num2)){
+       return 1
+    }
+  }
+  return 0
 }
