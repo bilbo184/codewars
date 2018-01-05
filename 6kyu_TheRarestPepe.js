@@ -11,19 +11,49 @@
 // rarest pepe (or pepes) has a frequency of 5 or more, then it is not really a rare 
 // pepe, so your function should return 'No rare pepes!'.
 
-function findRarestPepe(pepes) {
-    let obj = {}, temp = [], lowest = Number.POSITIVE_INFINITY;
-    
-    for(let i = 0; i < pepes.length; i++)
-        (obj.hasOwnProperty(pepes[i])) ? obj[pepes[i]] += 1 : obj[pepes[i]] = 1; 
-    for(let x in obj) {
-        if(obj[x] < lowest) {
-            temp = [x];
-            lowest = obj[x];
-        } else if (obj[x] === lowest) {
-            temp.push(x)
-        }
+function findRarestPepe(pepes){
+  var obj = {};
+  var temp = [];
+  var lowest = Number.POSITIVE_INFINITY;
+  for(var i = 0; i < pepes.length; i++){
+    if(obj[pepes[i]] == null){
+      obj[pepes[i]] = 1;
+    }else{
+      obj[pepes[i]]++;
     }
-    
-    return (lowest >= 5) ? 'No rare pepes!' : (temp.length < 2) ? temp.pop() : temp.sort() ;
+  }
+  for(var j in obj){
+    if(obj[j] < lowest){
+      lowest = obj[j];
+      temp = [j];
+    }else if(obj[j] === lowest){
+      temp.push(j);
+    }
+  }
+ return (lowest >= 5) ? 'No rare pepes!' : (temp.length < 2) ? temp.pop() : temp.sort() ;
 }
+
+var pepes = [  'Donald Trump Pepe',
+              'Melania Trump Pepe',
+              'Clown Pepe',
+              'Clown Pepe',
+              'Donald Trump Pepe'];
+
+console.log(findRarestPepe(pepes));
+
+var pepes = [ 'Go Pepe',
+              'Deep Learning Pepe',
+              'Machine Learning Pepe',
+              'Machine Learning Pepe',
+              'Machine Learning Pepe'];
+              
+console.log(findRarestPepe(pepes));
+
+var pepes = [ 'Codewars Pepe',
+              'Codewars Pepe',
+              'Codewars Pepe',
+              'Codewars Pepe',
+              'Codewars Pepe'];
+              
+console.log(findRarestPepe(pepes));
+
