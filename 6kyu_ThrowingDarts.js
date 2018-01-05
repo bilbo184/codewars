@@ -20,6 +20,28 @@
 // scoreThrows( [15, 20, 30] ) => returns 0 
 // scoreThrows( [1, 2, 3, 4] ) => returns 140
 
+function scoreThrows(radiuses){
+  if(radiuses.length === 0) {
+    return 0;
+  }
+  var bonus = radiuses.filter(function(a){
+    return a < 5;
+  }).length === radiuses.length ? 100 : 0;
+ 
+  var count = 0;
+  return radiuses.map(function(a){
+    return (a > 10) ? 0 : (  a >= 5 && a <= 10) ? 5 : 10;
+  }).reduce(function(a, b){
+    return a + b;
+  },0) + bonus;
+}
+
+
+console.log(scoreThrows([1, 5, 11])); // 15
+console.log(scoreThrows([15, 20, 30])); // 0
+console.log(scoreThrows([1, 2, 3, 4])); // 140
+
+// solution 2
 
 function scoreThrows(radiuses){
   if(!radiuses.length) { return 0;}
