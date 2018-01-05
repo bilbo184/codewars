@@ -27,15 +27,15 @@
 // de
 // e
 
-f=n=>n%15==0
-?"fizzbuzz"
-:(n%5===0)
-?("buzz")
-:n%3===0
-?"fizz"
-:n//uh
-//hhh
-//hh
-/*1
-*/
-;
+f = n => (n%15==0) ?"fizzbuzz" : (n%5===0) ? ("buzz") : (n%3===0) ? "fizz" :n; 
+
+
+
+console.log(f(3)); // fizz
+console.log(f(9)); // fizz
+console.log(f(5)); // buzz
+console.log(f(10)); // buzz
+console.log(f(15)); // fizzbuzz
+console.log(f(30)); // fizzbuzz
+console.log(f(8)); // 8
+console.log(f(28)); // 28
