@@ -27,7 +27,18 @@
 // de
 // e
 
-f = n => (n%15==0) ?"fizzbuzz" : (n%5===0) ? ("buzz") : (n%3===0) ? "fizz" :n; 
+f=n=>n%15==0
+?"fizzbuzz"
+:(n%5===0)
+?("buzz")
+:n%3===0
+?"fizz"
+:n//uh
+//hhh
+//hh
+/*1
+*/
+;
 
 
 
