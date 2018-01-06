@@ -22,8 +22,33 @@
 // //output must be in same format.
 // vodkaConsumption(shots) //must return "3900ml" or "4l"
 
-let vodkaConsumption = function(shots){
-    let ml = shots.filter(a=> /ml/.test(a)).map(a=>+a.replace(/[a-z]/gi, ""));
-    let liter = shots.filter(a => !/ml/.test(a)).map(a=>+a.replace(/[a-z]/gi, "") * 1000);
-    return ml.concat(liter).reduce((a,b)=> a+b) + "ml";
+function vodkaConsumption(shots){
+  var ml = shots.filter(function(a){
+    return /ml/.test(a);
+  }).map(function(a){
+    return a.replace(/[a-z]/gi, "");
+  }).reduce(function(a, b){
+     return Number(a) + Number(b);
+  }, 0);
+  var liter = shots.filter(function(a){
+    return !/ml/.test(a);
+  }).map(function(a){
+    return a.replace(/[a-z]/gi, "")*1000;
+  }).reduce(function(a, b){
+    return Number(a) + Number(b);
+  }, 0);
+  return Math.round((ml) + (liter)) + "ml";
+}
+
+console.log(vodkaConsumption(["500ml","2l","1.4l"])); // 
+console.log(vodkaConsumption(["40ml","5.5l"])); // 
+
+// solution 2
+
+function vodkaConsumption(shots){
+   return shots.map(x => {
+    var measure = x.match(/[A-Za-z]/g).join('');
+    var amount = x.match(/[0-9\.]/g).join('');
+   return (measure === "l") ? amount*1000 : + amount;
+ }).reduce((a, b) => a+ b) +"ml"; 
 }
