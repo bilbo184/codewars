@@ -15,14 +15,19 @@
 // bitsWar([7,-3,20]) => "evens win" //111-11 vs 10100, 3-2 vs 2
 // bitsWar([7,-3,-2,6]) => "tie" //111-11 vs -1+110, 3-2 vs -1+2
 
-let bitsWar = function(arr){
-    let evens = arr.filter(a=>a%2===0)
-                   .map(a=> (a === 0) ? 0 : (Math.abs(a) >>> 0).toString(2)
-                   .match(/1/g).length * (a >= 0 ? 1 : -1))
-                   .reduce((a, b) => a + b, 0),
-        odds = arr.filter(a=>a%2!==0)
-                  .map(a=> (Math.abs(a) >>> 0).toString(2)
-                  .match(/1/g).length * (a >= 0 ? 1 : -1))
-                  .reduce((a, b) => a + b, 0);
-    return (evens === odds) ? "tie" : (evens > odds) ? "evens win" : "odds win";
+function bitsWar(arr){
+  var evens = arr.filter(a => a%2 === 0)
+                 .map(a => (a === 0) ? 0 : (Math.abs(a)).toString(2)
+                 .match(/1/g).length * (a >= 0 ? 1 : -1))
+                 .reduce((a, b) => a + b, 0);
+  var odds =  arr.filter(a => a%2 !== 0)
+                 .map(a => Math.abs(a).toString(2)
+                 .match(/1/g).length * (a >= 0 ? 1 : -1))
+                 .reduce((a, b) => a + b, 0);
+  return (evens === odds) ? "tie" : (evens > odds) ? "evens win" : "odds win";
 }
+
+
+console.log(bitsWar([1,5,12])); // odds win
+console.log(bitsWar([7,-3,20])); // evens win
+console.log(bitsWar([7,-3,-2,6])); // tie
