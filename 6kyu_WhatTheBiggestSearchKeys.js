@@ -17,7 +17,14 @@
 // Don't forget to rate this kata! Thanks :)
 
 function theBiggestSearchKeys(...args) {
-  let maxLength = Math.max(...args.map(a => a.length)),
-      result = args.filter(a => a.length === maxLength).sort().map(a => `'${a}'`).join(', ');
-  return (result.length === 0) ? '\'\'' : result;
+  var length = Math.max(...args.map(k => k.length));
+  return "'" + args.filter(k => k.length === length).sort().join("', '")+"'";
 }
+
+console.log(theBiggestSearchKeys('key1', 'key2', 'key3', 'key n', 'bigkey2', 'bigkey1'));
+// 'bigkey1', 'bigkey2'
+console.log(theBiggestSearchKeys("coding", "sorting", "tryruby")); 
+// 'sorting', 'tryruby'
+console.log(theBiggestSearchKeys("small keyword", "how to coding?", "very nice kata", "a lot of keys", "I like Ruby!!!")); 
+// 'I like Ruby!!!', 'how to coding?', 'very nice kata' 
+console.log(theBiggestSearchKeys("pippi")); // 'pippi'
