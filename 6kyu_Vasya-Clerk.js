@@ -21,22 +21,28 @@
 // tickets([25, 100])    
 // // => NO. Vasya will not have enough money to give change to 100 dollars
 
-function tickets(peopleInLine) {
-  let arr = [0, 0];
-  for (var i = 0; i < peopleInLine.length; i++) {
-    switch (peopleInLine[i]) {
-      case 25:
-        arr[0]++;
-        break;
-      case 50:
-        [arr[0]--, arr[1]++]
-        break;
-      default:
-        (arr[1]) ? arr[1]-- : arr[0] -= 2;
-        arr[0]--;
-        break;
-    }
-    if (arr[0] < 0) { return 'NO' }
+function tickets(peopleInLine){
+  var arr = [0, 0];
+  for(var i = 0; i < peopleInLine.length; i++){
+  switch(peopleInLine[i]){
+    case 25:
+    arr[0]++;
+    break;
+    case 50:
+    arr[1]++;
+    arr[0]--;
+    break;
+    default:
+    (arr[1])? arr[1]-- : arr[0]-=2;
+    arr[0]--;
+    break;
   }
-  return 'YES'
+  if(arr[0] < 0) { return "NO" }
+  }
+  return "YES";
+  
 }
+
+
+console.log(tickets([25, 25, 50])); // YES
+console.log(tickets([25, 100])); // NO
