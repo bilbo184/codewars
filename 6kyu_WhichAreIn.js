@@ -23,16 +23,21 @@
 // language.
 // Beware: r must be without duplicates.
 
-let inArray = function(array1, array2){
-    let arr = [];
-    for(let i = 0; i < array1.length; i++){
-        let substr = array1[i];
-        for(let j = 0; j < array2.length; j++){
-            if(array2[j].indexOf(substr) !== -1){
-                arr.push(array1[i]);
-                break;
-            }
-        }
+function inArray(arr1, arr2){
+  var arr= [];
+  for(var i = 0; i < arr1.length; i++){
+    var substr = arr1[i];
+    for(var j = 0; j < arr2.length; j++){
+      if(arr2[j].indexOf(substr) > -1){
+        arr.push(substr);
+        break;
+      }
     }
-    return arr.sort();
+  }
+  return arr.sort();
 }
+
+
+console.log(inArray(["arp", "live", "strong"], ["lively", "alive", "harp", "sharp", "armstrong"])); // ["arp", "live", "strong"]
+console.log(inArray(["tarp", "mice", "bull"], ["lively", "alive", "harp", "sharp", "armstrong"])); // []
+
