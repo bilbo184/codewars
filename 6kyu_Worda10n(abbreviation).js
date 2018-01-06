@@ -27,10 +27,19 @@
 //                     "-"      " "    " "     " "     "!"
 // === "e6t-r3s are r4y fun!"
 
-let abbreviate = function(str) {
-  str = str.replace(/[a-z]+/gi, function(word) {
-    if(word.length <= 3) { return word;}
-      return (word.length <=3) ? word : `${word[0]}${word.length-2}${word[word.length-1]}`;
+function abbreviate(str){
+  str = str.replace(/[a-z]+/gi, function(word){
+    return (word.length > 3) ? word[0].concat(word.length-2).concat(word[word.length-1]) : word;
   });
   return str;
 }
+
+console.log(abbreviate("elephant-rides are really fun!")); // "e6t-r3s are r4y fun!"
+
+// solution 2
+
+// function abbreviate(string) {
+//   return string.replace(/\w{4,}/g, function(word) {
+//     return word[0] + (word.length - 2) + word.slice(-1);
+//   });
+// }
