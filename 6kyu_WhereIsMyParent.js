@@ -17,6 +17,14 @@
 // I.E "aAbaBb" => "AaaBbb".
 
 function findChildren(dancingBrigade) {
-  return dancingBrigade.split('').sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()) || b.localeCompare(a))
-    .join('')
+  return dancingBrigade.toLowerCase()
+                       .split('')
+                       .sort()
+                       .map(function(a, i, arr){
+                         return ( i === 0 || a !== arr[i-1]) ? a.toUpperCase() : a;
+                       }).join('');
 }
+
+console.log(findChildren("beeeEBb")); // BbbEeee
+console.log(findChildren("uwwWUueEe")); // EeeUuuWww
+
