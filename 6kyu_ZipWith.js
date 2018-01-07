@@ -25,9 +25,16 @@
 
 // Assume all input is valid.
 
+
 function zipWith(fn,a0,a1) {
-  return Array.from({length: Math.min(a0.length, a1.length)}, (_, i) => fn(a0[i], a1[i]));
+  var l = Math.min(a0.length, a1.length);
+  var res = [];
+  for (var i = 0; i < l; i++) {
+    res.push(fn(a0[i],a1[i]))
+  }
+  return res
 }
+
 
 console.log(zipWith(Math.pow, [10,10,10,10], [0,1,2,3])); // [1,10,100,1000]
 console.log(zipWith(Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1])); // [4,7,7,4,7,7]
