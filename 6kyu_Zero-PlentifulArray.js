@@ -5,23 +5,16 @@
 // the number of zero sequences if the given array is zero-plentiful else 0.
 
 function zeroPlentiful(arr){
-  var zeros = 0;
-  var seq = 0;
-  for(var i = 0; i <= arr.length; i++){
-    if(arr[i] === 0){
-      seq++;
-    }else{
-      if(seq !== 0 && seq < 4){
-        return 0;
-      }
-      if(seq > 3){
-         zeros++;
-      }
-      seq = 0;
-    }
+  let t = arr.join('').match(/0+/g);
+  if(t === null){
+    return 0;
   }
-  return zeros;
+    // return t.every(a => a.length > 3) ? t.length : 0;
+    return t.map(function(a){
+      return a.length > 3;
+    }) ? t.length : 0;
 }
+
 
 console.log(zeroPlentiful([3])); // 0
 console.log(zeroPlentiful([0,0,0,0,0,0])); // 1
