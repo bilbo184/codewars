@@ -25,4 +25,11 @@
 
 // Assume all input is valid.
 
-const zipWith = (fn, a0, a1) => a0.slice(0, Math.min(a0.length, a1.length)).map((_,i) => fn(a0[i], a1[i]))
+function zipWith(fn,a0,a1) {
+  return Array.from({length: Math.min(a0.length, a1.length)}, (_, i) => fn(a0[i], a1[i]));
+}
+
+console.log(zipWith(Math.pow, [10,10,10,10], [0,1,2,3])); // [1,10,100,1000]
+console.log(zipWith(Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1])); // [4,7,7,4,7,7]
+console.log(zipWith(function(a,b) { return a+b; }, [0,1,2,3], [0,1,2,3])); // [0,2,4,6]
+console.log(zipWith((a,b) => a+b, [0,1,2,3], [0,1,2,3] )); // [0,2,4,6]
